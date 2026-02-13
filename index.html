@@ -6,11 +6,9 @@
     <title>Vicente Ramos</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      href="https://site-assets.fontawesome.com/releases/v7.2.0/css/all.css"
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,10 +16,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
   </head>
   <body>
     <header>
-      <h1><img src="imagens/Logo_transparente.png" alt="" /></h1>
+      <img src="imagens/Logo_transparente.png" alt="" />
 
       <div>
         <nav>
@@ -43,68 +42,74 @@
     </header>
 
     <main>
-      <div class="container-apresentacao">
-        <section class="section-apresentacao">
-          <p>Olá, eu sou o <span>Vicente Ramos</span></p>
+      <section class="container-apresentacao">
+        <div class="apresentacao">
+          <div class="section-apresentacao">
+            <p>Olá, eu sou o<span>Vicente Ramos</span></p>
 
-          <p class="container-subtitulo">
-            Full Stack Developer | HTML | CSS | JavaScript
-          </p>
+            <p class="container-subtitulo">
+              Full Stack Developer | HTML | CSS | JavaScript
+            </p>
 
-          <button class="container-download-cv">download curriculo</button>
-        </section>
-
-        <section class="container-img">
-          <div class="borda"></div>
-
-          <img src="imagens/IMG_20251230_150253_435.PNG" alt="" />
-        </section>
-      </div>
-
-      <section id="sobre" class="section-sobre-mim">
-        <p><span>Sobre mim</span></p>
-        <p>
-          Tenho 3 anos de experiência na área de logística, onde atuei como
-          analista e encarregado, liderando equipes e otimizando processos.
-          Hoje, aplico essa visão de planejamento e eficiência no
-          desenvolvimento front-end — criando sites bem estruturados, com foco
-          em usabilidade e performance. Estou em constante aprendizado,
-          aprimorando minhas habilidades em HTML, CSS, JavaScript e React.
-        </p>
-      </section>
-
-      <section class="habilidades"></section>
-      <div class="container-habilidades">
-        <p>habilidades</p>
-        <div class="container-icones">
-          <div class="icones">
-            <i class="fa-brands fa-html5"></i><span>HTML 5</span>
+            <button class="container-download-cv">download curriculo</button>
           </div>
-          <div class="icones">
-            <i class="fa-brands fa-css3-alt"></i><span>CSS 3</span>
-          </div>
-          <div class="icones">
-            <i class="fa-brands fa-square-js"></i><span>JavaScript</span>
+
+          <div class="container-img">
+            <div class="borda"></div>
+
+            <img src="imagens/IMG_20251230_150253_435.PNG" alt="" />
           </div>
         </div>
-      </div>
 
-      <section class="container-projetos">
+        <div id="sobre" class="section-sobre-mim">
+          <p><span>Sobre mim</span></p>
+          <p>
+            Minha trajetória profissional começou na área de logística, onde
+            construí uma base forte em análise, processos e liderança de
+            equipes. Após mais de três anos no setor, decidi seguir um novo
+            caminho alinhado à minha curiosidade e interesse por tecnologia.
+            Hoje, estou em transição para o desenvolvimento Full Stack,
+            estudando e desenvolvendo projetos. Gosto de transformar ideias em
+            soluções funcionais e estou sempre em busca de aprendizado e
+            evolução constante.
+          </p>
+        </div>
+      </section>
+
+      <section id="habilidades" class="secao">
+        <div class="container-habilidades">
+          <p>habilidades</p>
+          <div class="container-icones">
+            <div class="icones">
+              <i class="fa-brands fa-html5"></i><span>HTML 5</span>
+            </div>
+
+            <div class="icones">
+              <i class="fa-brands fa-css3-alt"></i><span>CSS 3</span>
+            </div>
+
+            <div class="icones">
+              <i class="fa-brands fa-square-js"></i><span>JavaScript</span>
+            </div>
+
+            <div id="tailwind" class="icones">
+              <i class="fa-brands fa-tailwind-css"></i><span>Tailwind</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="container-projetos" class="secao">
         <p>projetos</p>
 
-        <div class="container-icones-habilidades">
+        <div class="container-icones-projetos">
           <i class="fa-solid fa-gears"></i>
-          <p class="texto">
-            Construção
-            <span class="pontos"
-              ><span>.</span><span>.</span><span>.</span></span
-            >
-          </p>
+          <p class="texto">em construção...</p>
         </div>
       </section>
     </main>
 
-    <footer>
+    <footer class="secao">
       <section class="container-footer">
         <div class="card-footer">
           <i class="fa-solid fa-envelope"></i>
@@ -132,4 +137,6 @@
       </section>
     </footer>
   </body>
+
+  <script src="script.js"></script>
 </html>

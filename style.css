@@ -2,11 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red; */
 }
 
 body {
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
+
   background: #000633;
 }
 
@@ -17,8 +18,26 @@ header {
   justify-content: space-between;
   flex-direction: row;
   gap: 1rem;
-  height: 9%;
   text-transform: uppercase;
+  padding: 0 8rem;
+}
+
+section {
+  max-height: 100vh;
+}
+
+.secao {
+  opacity: 0;
+  filter: blur(1rem);
+  transform: translateY(100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition: all 1s;
 }
 
 header ul {
@@ -51,14 +70,22 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem;
+  padding: 0 8rem;
 }
 
-.container-apresentacao {
-  padding-top: 10rem;
+.apresentacao {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+.container-apresentacao {
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -159,6 +186,7 @@ main .container-subtitulo {
 }
 
 .section-sobre-mim p {
+  text-align: center;
   font-size: 1.3rem;
   color: #8b8a8a;
 }
@@ -177,39 +205,44 @@ main .container-subtitulo {
     0 0 2rem #8a2be266;
 }
 
-.habilidades {
-  margin-top: 7rem;
-}
-
 .container-habilidades p {
   font-size: 2rem;
   text-transform: uppercase;
   font-weight: 600;
 }
+
 .container-habilidades {
+  height: 20rem;
   color: white;
-  font-size: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 }
 
 .container-icones {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: 4rem;
 }
 
 .icones {
-  color: #9939f3;
+  color: white;
   font-size: 5rem;
   border-radius: 0.8rem 0.8rem 0.3rem 0.3rem;
   box-shadow:
     0 0 0.5rem #8a2be2,
     0 0 3rem #8a2be266;
   cursor: pointer;
+}
+
+#tailwind i {
+  font-size: 4rem;
+  margin-left: 0.8rem;
 }
 
 .icones span {
@@ -237,11 +270,11 @@ main .container-subtitulo {
     0 0 3rem #8a2be266;
 }
 
-.container-projetos {
-  margin-top: 7rem;
+#container-projetos {
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 }
-
-.container-projetos p {
+#container-projetos p {
   display: flex;
   justify-content: center;
   text-transform: uppercase;
@@ -249,7 +282,7 @@ main .container-subtitulo {
   font-weight: 600;
 }
 
-.container-icones-habilidades {
+.container-icones-projetos {
   margin-top: 2.5rem;
   color: white;
   font-size: 4rem;
@@ -261,37 +294,8 @@ main .container-subtitulo {
   cursor: pointer;
 }
 
-.pontos span {
-  display: inline-block;
-}
-
-/* anima quando passar o mouse no container inteiro */
-.container-icones-habilidades:hover .pontos span {
-  color: #8a2be2;
-  animation: pulo 0.6s ease-in-out infinite;
-}
-
-/* delays para efeito em sequência */
-.container-icones-habilidades:hover .pontos span:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.container-icones-habilidades:hover .pontos span:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.container-icones-habilidades:hover .pontos span:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-@keyframes pulo {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+footer {
+  margin-top: 20rem;
 }
 
 .container-footer {
@@ -311,13 +315,13 @@ main .container-subtitulo {
   gap: 0.5rem;
   width: 8rem;
   margin-top: 7rem;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   cursor: pointer;
 }
 
 .card-footer i {
   font-size: 2.5rem;
-  color: #8a2be2;
+  color: white;
 }
 
 .dados {
