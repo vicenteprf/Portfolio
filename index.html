@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vicente Ramos</title>
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v7.2.0/css/all.css"
-    />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+ <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,21 +23,21 @@
   </head>
   <body>
     <header>
-      <img src="imagens/Logo_transparente.png" alt="" />
+      <img src="assets/Logo_transparente.png" alt="" />
 
       <div>
         <nav>
           <ul>
             <li>
-              <a href="#sobre">Sobre mim</a>
+              <a href="#container-apresentacao">Sobre mim</a>
             </li>
 
             <li>
-              <a href="#projetos">Projetos</a>
+              <a href="#container-projetos">Projetos</a>
             </li>
 
             <li>
-              <a href="#contato">Contato</a>
+              <a href="#container-footer">Contato</a>
             </li>
           </ul>
         </nav>
@@ -42,27 +45,23 @@
     </header>
 
     <main>
-      <section class="container-apresentacao">
+      <section id="container-apresentacao" class="container-apresentacao">
         <div class="apresentacao">
           <div class="section-apresentacao">
             <p>Olá, eu sou o<span>Vicente Ramos</span></p>
 
-            <p class="container-subtitulo">
-              Full Stack Developer | HTML | CSS | JavaScript
-            </p>
-
-            <button class="container-download-cv">download curriculo</button>
+            <p class="container-subtitulo">Desenvolvedor FullStack</p>
           </div>
 
           <div class="container-img">
             <div class="borda"></div>
 
-            <img src="imagens/IMG_20251230_150253_435.PNG" alt="" />
+            <img src="assets/IMG_20251230_150253_435.PNG" alt="" />
           </div>
         </div>
 
         <div id="sobre" class="section-sobre-mim">
-          <p><span>Sobre mim</span></p>
+          <p><h2>Sobre mim</h2></p>
           <p>
             Minha trajetória profissional começou na área de logística, onde
             construí uma base forte em análise, processos e liderança de
@@ -81,59 +80,113 @@
           <p>habilidades</p>
           <div class="container-icones">
             <div class="icones">
-              <i class="fa-brands fa-html5"></i><span>HTML 5</span>
+              <i class="devicon-html5-plain"></i><span>HTML 5</span>
             </div>
 
             <div class="icones">
-              <i class="fa-brands fa-css3-alt"></i><span>CSS 3</span>
-            </div>
-
-            <div class="icones">
-              <i class="fa-brands fa-square-js"></i><span>JavaScript</span>
+              <i class="devicon-css3-plain"></i></i><span>CSS 3</span>
             </div>
 
             <div id="tailwind" class="icones">
-              <i class="fa-brands fa-tailwind-css"></i><span>Tailwind</span>
+              <i class="devicon-tailwindcss-plain"></i><span>Tailwind</span>
+            </div>
+
+            <div id="javascript" class="icones">
+              <i class="devicon-javascript-plain  "></i><span>JavaScript</span>
+            </div>
+
+            <div id="typescript" class="icones">
+              <i class="devicon-typescript-plain  "></i><span>TypeScript</span>
+            </div>
+
+            <div class="icones">
+              <i class="devicon-react-plain  "></i><span>React</span>
             </div>
           </div>
         </div>
       </section>
 
       <section id="container-projetos" class="secao">
-        <p>projetos</p>
+        <p class="titulo-secao">projetos</p>
 
-        <div class="container-icones-projetos">
-          <i class="fa-solid fa-gears"></i>
-          <p class="texto">em construção...</p>
+        <div class="container-projeto">
+          <div class="card-projeto">
+            <img src="projetos/1-login/assets/login.png" alt="Projeto Login" />
+
+            <h3>Tela Login</h3>
+
+            <p>
+              Interface de login desenvolvida com HTML e CSS, focada em layout e
+              estilização com flexbox.
+            </p>
+
+            <div class="tecnologias">
+              <span><i class="fa-brands fa-html5"></i></span>
+              <span><i class="fa-brands fa-css3-alt"></i></span>
+            </div>
+
+            <div class="links-projeto">
+              <a href="#" target="_blank">Ver projeto</a>
+              <a href="#" target="_blank">Código</a>
+            </div>
+          </div>
+
+          <div class="card-projeto">
+            <img
+              src="projetos/2-calculadora/assets/Captura de tela 2026-03-13 140036.png"
+              alt="Projeto Calculadora"
+            />
+
+            <h3>Calculadora</h3>
+
+            <p>
+              Calculadora desenvolvida com HTML, CSS e JavaScript, utilizando
+              manipulação do DOM e eventos.
+            </p>
+
+            <div class="tecnologias">
+              <span><i class="fa-brands fa-html5"></i></span>
+              <span><i class="fa-brands fa-css3-alt"></i></span>
+              <span><i class="fa-brands fa-square-js"></i></span>
+            </div>
+
+            <div class="links-projeto">
+              <a href="#" target="_blank">Ver projeto</a>
+              <a href="#" target="_blank">Código</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="secao">
-      <section class="container-footer">
-        <div class="card-footer">
+      <section id="container-footer" class="container-footer">
+        <a href="mailto:vicenteprfilho09@gmail.com" class="card-footer">
           <i class="fa-solid fa-envelope"></i>
           <p>E-mail</p>
           <p class="dados">vicenteprfilho09@gmail.com</p>
-        </div>
+        </a>
 
-        <div class="card-footer">
+        <a
+          href="https://www.linkedin.com/in/vicente-ramos9/"
+          class="card-footer"
+        >
+          <i class="devicon-linkedin-plain"></i>
+          <p>Linkedin</p>
+          <p class="dados">@vicente-ramos9</p>
+        </a>
+
+        <a href="https://github.com/vicenteprf" class="card-footer">
+          <i class="devicon-github-original"></i>
+          <p>Github</p>
+          <p class="dados">vicenteramos-alt</p>
+        </a>
+
+        <a href="https://wa.me/5585986353447" class="card-footer">
           <i class="fa-brands fa-whatsapp"></i>
           <p>WhatsApp</p>
           <p class="dados">(85) 98635-3447</p>
-        </div>
-
-        <div class="card-footer">
-          <i class="fa-brands fa-linkedin"></i>
-          <p>Linkedin</p>
-          <p class="dados">@vicente-ramos9</p>
-        </div>
-
-        <div class="card-footer">
-          <i class="fa-brands fa-github"></i>
-          <p>Github</p>
-          <p class="dados">vicenteramos-alt</p>
-        </div>
+        </a>
       </section>
     </footer>
   </body>
