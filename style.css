@@ -18,7 +18,7 @@ body {
 }
 
 header {
-  background: linear-gradient(to bottom, #8a2be2 50%, #000633);
+  background: linear-gradient(to bottom, #8a2be2 -10%, #000633);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -363,6 +363,10 @@ main .container-subtitulo {
   transition: 0.5s;
 }
 
+footer {
+  background: linear-gradient(to top, #8a2be2 -70%, #000633 45%);
+}
+
 .container-footer {
   display: flex;
   flex-direction: row;
@@ -394,7 +398,7 @@ main .container-subtitulo {
 }
 
 .dados {
-  color: #8b8a8a;
+  color: #fff;
   font-weight: 600;
 }
 
