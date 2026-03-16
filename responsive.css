@@ -1,10 +1,46 @@
-@media (max-width: 1900px) {
-  .section-apresentacao p {
+@media (max-width: 2220px) {
+  main p {
     font-size: 2rem;
   }
+
+  .section-apresentacao span {
+    font-size: 3.5rem;
+  }
+
+  .container-img {
+    width: 38rem;
+  }
+
   .container-projeto {
     flex-wrap: wrap;
   }
+
+  .card-projeto {
+    height: auto;
+    width: auto;
+  }
+}
+@media (max-width: 1900px) {
+  main p {
+    font-size: 1.8rem;
+  }
+
+  .section-apresentacao span {
+    font-size: 2.5rem;
+  }
+
+  main .container-subtitulo {
+    font-size: 1.7rem;
+  }
+
+  .container-img {
+    width: 35rem;
+  }
+
+  .container-projeto {
+    flex-wrap: wrap;
+  }
+
   .card-projeto {
     height: auto;
     width: auto;
@@ -12,12 +48,20 @@
 }
 
 @media (max-width: 1600px) {
-  .section-apresentacao p {
-    font-size: 1.9rem;
+  main p {
+    font-size: 1.4rem;
+  }
+
+  .section-apresentacao span {
+    font-size: 2rem;
+  }
+
+  main .container-subtitulo {
+    font-size: 1.4rem;
   }
 
   .container-img {
-    width: 28rem;
+    width: 30rem;
   }
 }
 
@@ -34,11 +78,11 @@
     width: 20rem;
   }
 
-  .container-download-cv {
+  /* .container-download-cv {
     font-size: 0.5rem;
     height: 2rem;
     width: auto;
-  }
+  } */
   .section-sobre-mim span {
     font-size: 1.5rem;
   }
@@ -52,6 +96,30 @@
   }
 }
 
+@media (max-width: 1100px) {
+  .apresentacao {
+    margin-top: 2.5rem;
+    flex-direction: column-reverse;
+    gap: 5rem;
+  }
+
+  main p {
+    font-size: 1.8rem;
+  }
+
+  .section-apresentacao span {
+    font-size: 2.5rem;
+  }
+
+  .container-img {
+    width: 22rem;
+  }
+
+  main .container-subtitulo {
+    font-size: 1.6rem;
+  }
+}
+
 @media (max-width: 1000px) {
   header a {
     font-size: 0.7rem;
@@ -62,19 +130,11 @@
     flex-direction: column-reverse;
   }
 
-  .section-apresentacao p {
-    font-size: 2rem;
-  }
-
-  .container-img {
-    width: 25rem;
-  }
-
-  .container-download-cv {
+  /* .container-download-cv {
     font-size: 0.3rem;
     height: 1rem;
     width: auto;
-  }
+  } */
 
   .container-footer {
     flex-wrap: wrap;
@@ -132,7 +192,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   header a {
     font-size: 0.4rem;
   }
@@ -150,6 +210,10 @@
 
   .container-subtitulo {
     font-size: 0.9rem;
+  }
+
+  .section-apresentacao span {
+    font-size: 1.5rem;
   }
 
   .container-img {
