@@ -292,6 +292,10 @@ main .container-subtitulo {
 
 .card-projeto {
   border: 0.1rem solid #8a2be2;
+  box-shadow:
+    0 0 0.1rem #8a2be2,
+    0 0 0.4rem #8a2be299,
+    0 0 0.6rem #8a2be266;
   border-radius: 0.8rem;
   display: flex;
   align-items: center;
@@ -305,10 +309,8 @@ main .container-subtitulo {
   transition: 0.5s;
   transform: scale(1.1);
 
-  box-shadow:
-    0 0 0.5rem #8a2be2,
-    0 0 1.8rem #8a2be299,
-    0 0 3rem #8a2be266;
+  border: 0.1rem solid #8a2be2;
+  border-bottom: 0.4rem solid #8a2be2;
 }
 
 .card-projeto img {
