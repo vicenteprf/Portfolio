@@ -30,7 +30,7 @@ header {
 .secao {
   opacity: 0;
   filter: blur(1rem);
-  transform: translateY(100%);
+  transform: translateY(50px);
   transition: all 1s;
 }
 
@@ -115,32 +115,6 @@ main .container-subtitulo {
   text-align: center;
 }
 
-/* .container-download-cv {
-  margin-top: 0.5rem;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  height: 2.5rem;
-  width: auto;
-  border-radius: 2rem;
-  color: white;
-  background: blueviolet;
-  border: none;
-  cursor: pointer;
-  padding: 0.2rem 0.4rem;
-} */
-
-/* .container-download-cv:hover {
-  background: #000633;
-  color: #8a2be2;
-  font-weight: 600;
-  transition: 0.8s;
-  transform: scale(1.1);
-  box-shadow:
-    0 0 1.5rem #8a2be299,
-    0 0 2rem #8a2be266;
-} */
-
 .container-img {
   position: relative;
   width: 40rem;
@@ -197,6 +171,14 @@ main .container-subtitulo {
   box-shadow:
     0 0 1rem #8a2be299,
     0 0 2rem #8a2be266;
+}
+
+#habilidades {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-habilidades p {
@@ -268,12 +250,14 @@ main .container-subtitulo {
 
 #container-projetos {
   min-height: 100vh;
-  margin: 10rem 0;
+  padding: 4rem 0;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
+  scroll-margin-top: 120px;
 }
 
 .titulo-secao {
