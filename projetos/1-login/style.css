@@ -31,8 +31,8 @@ main {
 }
 
 .container-principal:hover {
-  box-shadow: 0 0 3rem white;
-  transition: 0.6s;
+  box-shadow: 0 0 3rem rgba(255, 255, 255, 0.85);
+  transition: box-shadow 0.6s;
 }
 
 #titulo {
@@ -65,8 +65,8 @@ main {
 
 .container-acesso input:hover {
   border: none;
-  box-shadow: 0 0 0.6rem white;
-  transition: 0.5s;
+  box-shadow: 0 0 0.6rem rgba(255, 255, 255, 0.8);
+  transition: box-shadow 0.5s;
 }
 
 .container-acesso i {
@@ -112,9 +112,9 @@ main {
 
 #btn:hover {
   background-color: transparent;
-  box-shadow: 0 0 0.6rem white;
+  box-shadow: 0 0 0.6rem rgba(255, 255, 255, 0.9);
   color: white;
-  transition: 0.5s;
+  transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
 }
 
 .container-cadastre-se {
