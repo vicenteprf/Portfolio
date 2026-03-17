@@ -1,0 +1,392 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* marcação da estrutura */
+  /* outline: 1px solid red; */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #000633;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(to bottom, #8a2be2 -10%, #000633);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  text-transform: uppercase;
+  padding: 0 4rem;
+}
+
+.secao {
+  opacity: 0;
+  filter: blur(1rem);
+  transform: translateY(50px);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition:
+    all 0,
+    0.5s;
+}
+
+header ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin: 2rem;
+  list-style: none;
+}
+
+header a {
+  text-decoration: none;
+  color: #cfcccc;
+  cursor: pointer;
+}
+
+header a:hover {
+  color: white;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+header img {
+  height: auto;
+  width: 5rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 90%;
+  margin: auto;
+}
+
+.apresentacao {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+  width: 90%;
+}
+
+.container-apresentacao {
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main p {
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-apresentacao span {
+  color: blueviolet;
+  font-weight: 600;
+  font-size: 5rem;
+}
+
+main .container-subtitulo {
+  color: #8b8a8a;
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.container-img {
+  position: relative;
+  width: 40rem;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+
+.borda {
+  position: absolute;
+  inset: 0;
+  border: 1rem solid #8a2be2;
+  border-radius: 50%;
+  mask: radial-gradient(circle at left, black 90%);
+
+  box-shadow:
+    0 0 20px #8a2be2,
+    0 0 50px #8a2be299,
+    0 0 90px #8a2be266;
+
+  z-index: 4;
+}
+
+.container-img img {
+  width: 100%;
+  z-index: 4;
+  mask-image: radial-gradient(circle at top, black 50%, transparent 80%);
+
+  /* efeito 3D: imagem “saindo” da forma */
+  transform: translate(-10px, -30px);
+}
+
+.section-sobre-mim h2 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.section-sobre-mim p {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #8b8a8a;
+}
+
+.section-sobre-mim {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 5rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow:
+    0 0 1rem #8a2be299,
+    0 0 2rem #8a2be266;
+}
+
+#habilidades {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-habilidades p {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.container-habilidades {
+  height: 20rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 10rem 0;
+}
+
+.container-icones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.icones {
+  width: 5.8rem;
+  height: 6.8rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
+  color: white;
+  font-size: 3rem;
+  border-radius: 0.8rem 0.8rem 0.3rem 0.3rem;
+  box-shadow:
+    0 0 0.5rem #8a2be2,
+    0 0 3rem #8a2be266;
+  cursor: pointer;
+}
+
+.icones i {
+  font-size: 3rem;
+}
+
+.icones span {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.icones:hover span {
+  font-weight: 600;
+}
+
+.icones:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+
+  box-shadow:
+    0 0 0.5rem #8a2be2,
+    0 0 1.8rem #8a2be299,
+    0 0 3rem #8a2be266;
+}
+
+#container-projetos {
+  min-height: 100vh;
+  padding: 4rem 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  scroll-margin-top: 120px;
+}
+
+.titulo-secao {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.container-projeto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.card-projeto {
+  border: 0.1rem solid #8a2be2;
+  box-shadow:
+    0 0 0.1rem #8a2be2,
+    0 0 0.4rem #8a2be299,
+    0 0 0.6rem #8a2be266;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 22rem;
+  padding: 1.8rem;
+}
+
+.card-projeto:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+
+  border: 0.1rem solid #8a2be2;
+  border-bottom: 0.4rem solid #8a2be2;
+}
+
+.card-projeto img {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 0.3rem;
+}
+
+.card-projeto h3 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.card-projeto p {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.tecnologias i {
+  font-size: 1.5rem;
+  color: #8a2be2;
+  cursor: pointer;
+}
+
+.tecnologias i:hover {
+  color: #fff;
+}
+
+.links-projeto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.links-projeto a {
+  font-size: 0.7rem;
+  padding: 0.4rem 1rem;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(#8a2be2, #000633);
+  border-radius: 0.5rem;
+}
+
+.links-projeto a:hover {
+  background: transparent;
+  border: 0.1rem solid #8a2be2;
+  color: #8a2be2;
+  transition: 0.5s;
+}
+
+footer {
+  background: linear-gradient(to top, #8a2be2 -70%, #000633 45%);
+}
+
+.container-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.container-footer a {
+  text-decoration: none;
+}
+
+.card-footer {
+  color: white;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 8rem;
+  margin-top: 7rem;
+  margin-bottom: 5rem;
+  cursor: pointer;
+}
+
+.card-footer i {
+  font-size: 2rem;
+  color: white;
+}
+
+.dados {
+  color: #fff;
+  font-weight: 600;
+}
+
+.card-footer:hover {
+  transition: 0.2s;
+  transform: scale(1.2);
+}

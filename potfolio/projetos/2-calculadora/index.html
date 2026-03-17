@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <main class="container-corpo">
+      <h2 class="container-titulo">CALCULADORA</h2>
+      <input id="container-resultado-final" readonly />
+
+      <section class="num container-numerico">
+        <div class="container-numerico-central">
+          <div class="container-equacao">
+            <button id="apagar" type="button">C</button>
+            <button id="soma" type="button">+</button>
+            <button id="subtracao" type="button">-</button>
+          </div>
+
+          <div class="container-numerico1">
+            <button id="num7" type="button">7</button>
+            <button id="num8" type="button">8</button>
+            <button id="num9" type="button">9</button>
+          </div>
+
+          <div class="container-numerico2">
+            <button id="num4" type="button">4</button>
+            <button id="num5" type="button">5</button>
+            <button id="num6" type="button">6</button>
+          </div>
+
+          <div class="container-numerico3">
+            <button id="num1" type="button">1</button>
+            <button id="num2" type="button">2</button>
+            <button id="num3" type="button">3</button>
+          </div>
+
+          <div class="container-numerico4">
+            <button id="num0" type="button">0</button>
+            <button id="virgula" type="button">.</button>
+          </div>
+        </div>
+
+        <div class="container-numerico-lateral">
+          <button id="multiplicacao" type="button">*</button>
+          <button id="divisao" class="container-button-divisao" type="button">
+            /
+          </button>
+          <button class="container-resultado" type="button" id="Resultado">
+            =
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
