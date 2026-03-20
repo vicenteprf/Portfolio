@@ -281,12 +281,14 @@ main .container-subtitulo {
     0 0 0.4rem #8a2be299,
     0 0 0.6rem #8a2be266;
   border-radius: 0.8rem;
+  overflow: hidden;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
   gap: 0.9rem;
   max-width: 22rem;
-  padding: 1.8rem;
+  max-height: 26rem;
 }
 
 .card-projeto:hover {
@@ -298,9 +300,12 @@ main .container-subtitulo {
 }
 
 .card-projeto img {
-  margin-top: 1rem;
+  height: 11rem;
+  object-fit: cover;
+  margin: 0;
   width: 100%;
-  border-radius: 0.3rem;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
 }
 
 .card-projeto h3 {
@@ -310,14 +315,22 @@ main .container-subtitulo {
 }
 
 .card-projeto p {
+  height: 3rem;
   font-size: 0.8rem;
   text-align: center;
+  padding: 1rem;
 }
 
 .tecnologias i {
   font-size: 1.5rem;
+  width: 24px;
+  height: 24px;
   color: #8a2be2;
   cursor: pointer;
+}
+
+.devicon-typescript-plain {
+  font-size: 0.1rem;
 }
 
 .tecnologias i:hover {
@@ -329,6 +342,7 @@ main .container-subtitulo {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  padding-bottom: 1rem;
   gap: 2rem;
 }
 

@@ -21,18 +21,17 @@ main {
 
 .container-principal {
   color: white;
-  background-color: transparent;
   width: 100vh;
   max-width: 26rem;
   padding: 1.5rem;
-  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 1rem #ffffff1f;
   border-radius: 1rem;
   backdrop-filter: blur(0.5rem);
 }
 
 .container-principal:hover {
-  box-shadow: 0 0 3rem rgba(255, 255, 255, 0.85);
-  transition: box-shadow 0.6s;
+  box-shadow: 0 0 3rem white;
+  transition: 2s;
 }
 
 #titulo {
@@ -64,8 +63,8 @@ main {
 }
 
 .container-acesso input:hover {
-  border: none;
-  box-shadow: 0 0 0.6rem rgba(255, 255, 255, 0.8);
+  border: 0.06rem solid transparent;
+  box-shadow: 0 0 0.6rem white;
   transition: box-shadow 0.5s;
 }
 
@@ -112,9 +111,12 @@ main {
 
 #btn:hover {
   background-color: transparent;
-  box-shadow: 0 0 0.6rem rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0.6rem white;
   color: white;
-  transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
+  transition:
+    box-shadow 0.5s,
+    background-color 0.5s,
+    color 0.5s;
 }
 
 .container-cadastre-se {
@@ -153,7 +155,6 @@ a:hover {
   #titulo {
     font-size: 1.25rem;
   }
-
   .container-checkbox {
     font-size: 0.6rem;
   }
