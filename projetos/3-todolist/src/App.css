@@ -1,0 +1,74 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a8a8b3;
+  font-family: sans-serif;
+}
+
+.container {
+  background-color: #1a1a2e;
+  max-width: 30rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.todo-titulo {
+  color: #eaeaea;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.input-btnAdd {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-input {
+  width: 85%;
+  padding: 0.4rem 0.7rem;
+  background-color: #16213e;
+  border: 0.1rem solid gray;
+  border-radius: 0.5rem;
+  color: antiquewhite;
+}
+
+.btn-add {
+  padding: 0.4rem 0.7rem;
+  background-color: #e94560;
+  border: none;
+  border-radius: 0.5rem;
+  color: antiquewhite;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.filter-row {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+}
+
+.btn-filter {
+  padding: 0.3rem 0.8rem;
+  background-color: transparent;
+  border: 0.1rem solid #a8a8b3;
+  border-radius: 0.5rem;
+  color: #a8a8b3;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-filter.active {
+  border-color: #e94560;
+  color: #e94560;
+}
