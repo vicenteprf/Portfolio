@@ -264,7 +264,6 @@ main .container-subtitulo {
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  scroll-margin-top: 120px;
 }
 
 .titulo-secao {
