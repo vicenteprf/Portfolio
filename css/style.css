@@ -18,6 +18,7 @@ body {
 }
 
 header {
+  position: relative;
   background: linear-gradient(to bottom, #8a2be2 -10%, #000633);
   display: flex;
   align-items: center;
@@ -25,6 +26,14 @@ header {
   flex-direction: row;
   text-transform: uppercase;
   padding: 0 4rem;
+}
+
+.nav-menu ul {
+  display: flex;
+}
+
+.btn-menu {
+  display: none;
 }
 
 .secao {
@@ -38,9 +47,7 @@ header {
   opacity: 1;
   filter: blur(0);
   transform: translateY(0);
-  transition:
-    all 0,
-    0.5s;
+  transition: all 0.5s;
 }
 
 header ul {
@@ -94,7 +101,7 @@ main {
 }
 
 main p {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 500;
   color: white;
   display: flex;
@@ -105,7 +112,7 @@ main p {
 .section-apresentacao span {
   color: blueviolet;
   font-weight: 600;
-  font-size: 5rem;
+  font-size: 3.5rem;
 }
 
 main .container-subtitulo {
@@ -181,7 +188,7 @@ main .container-subtitulo {
   align-items: center;
 }
 
-.container-habilidades p {
+.container-habilidades h2 {
   font-size: 2.5rem;
   text-transform: uppercase;
   font-weight: 600;
@@ -331,10 +338,6 @@ main .container-subtitulo {
 
 .devicon-typescript-plain {
   font-size: 0.1rem;
-}
-
-.tecnologias i:hover {
-  color: #fff;
 }
 
 .links-projeto {

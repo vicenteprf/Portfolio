@@ -1,3 +1,22 @@
+const btnMenu = document.getElementById("btn-menu");
+const navMenu = document.getElementById("nav-menu");
+
+btnMenu.addEventListener("click", () => {
+  const isOpen = navMenu.classList.toggle("active");
+  btnMenu.setAttribute("aria-expanded", isOpen);
+  btnMenu.querySelector("i").className = isOpen
+    ? "fa-solid fa-xmark"
+    : "fa-solid fa-bars";
+});
+
+document.querySelectorAll("#nav-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+    btnMenu.setAttribute("aria-expanded", false);
+    btnMenu.querySelector("i").className = "fa-solid fa-bars";
+  });
+});
+
 const myObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {

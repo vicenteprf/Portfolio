@@ -24,25 +24,27 @@
   </head>
   <body>
     <header>
-      <img src="assets/Logo_transparente.png" alt="" />
+      <img src="assets/Logo_transparente.png" alt="Logo Vicente Ramos" />
 
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <a href="#sobre" id="btn-sobre">Sobre mim</a>
-            </li>
+      <button id="btn-menu" class="btn-menu" aria-label="Abrir menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-            <li>
-              <a href="#container-projetos" id="btn-projetos">Projetos</a>
-            </li>
+      <nav id="nav-menu" class="nav-menu">
+        <ul>
+          <li>
+            <a href="#sobre" id="btn-sobre">Sobre mim</a>
+          </li>
 
-            <li>
-              <a href="#container-footer">Contato</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+          <li>
+            <a href="#container-projetos" id="btn-projetos">Projetos</a>
+          </li>
+
+          <li>
+            <a href="#container-footer">Contato</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main>
@@ -57,7 +59,10 @@
           <div class="container-img">
             <div class="borda"></div>
 
-            <img src="assets/IMG_20251230_150253_435.PNG" alt="" />
+            <img
+              src="assets/IMG_20251230_150253_435.PNG"
+              alt="Foto de perfil de Vicente Ramos"
+            />
           </div>
         </div>
 
@@ -80,7 +85,7 @@
 
       <section id="habilidades" class="secao">
         <div class="container-habilidades">
-          <p>habilidades</p>
+          <h2>habilidades</h2>
           <div class="container-icones">
             <div class="icones">
               <i class="devicon-html5-plain"></i><span>HTML 5</span>
@@ -110,7 +115,7 @@
       </section>
 
       <section id="container-projetos" class="secao">
-        <p class="titulo-secao">projetos</p>
+        <h2 class="titulo-secao">projetos</h2>
 
         <div class="container-projeto">
           <div class="card-projeto">
@@ -129,12 +134,16 @@
             </div>
 
             <div class="links-projeto">
-              <a href="https://vicenteprf.github.io/tela-login/" target="_blank"
+              <a
+                href="https://vicenteprf.github.io/tela-login/"
+                target="_blank"
+                rel="noopener noreferrer"
                 >Ver projeto</a
               >
               <a
                 href="https://github.com/vicenteprf/Portf-lio/tree/main/projetos/1-login"
                 target="_blank"
+                rel="noopener noreferrer"
                 >Código</a
               >
             </div>
@@ -163,11 +172,13 @@
               <a
                 href="https://vicenteprf.github.io/calculadora/"
                 target="_blank"
+                rel="noopener noreferrer"
                 >Ver projeto</a
               >
               <a
-                href="https://vicenteprf.github.io/calculadora/"
+                href="https://github.com/vicenteprf/calculadora"
                 target="_blank"
+                rel="noopener noreferrer"
                 >Código</a
               >
             </div>
@@ -193,10 +204,16 @@
             </div>
 
             <div class="links-projeto">
-              <a href="https://vicenteprf.github.io/To-do-List/" target="_blank"
+              <a
+                href="https://vicenteprf.github.io/To-do-List/"
+                target="_blank"
+                rel="noopener noreferrer"
                 >Ver projeto</a
               >
-              <a href="https://github.com/vicenteprf/To-do-List" target="_blank"
+              <a
+                href="https://github.com/vicenteprf/To-do-List"
+                target="_blank"
+                rel="noopener noreferrer"
                 >Código</a
               >
             </div>
@@ -211,6 +228,7 @@
           href="mailto:vicenteprfilho09@gmail.com"
           class="card-footer"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i class="fa-solid fa-envelope"></i>
           <p>E-mail</p>
@@ -221,6 +239,7 @@
           href="https://www.linkedin.com/in/vicente-ramos9/"
           class="card-footer"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i class="devicon-linkedin-plain"></i>
           <p>Linkedin</p>
@@ -231,6 +250,7 @@
           href="https://github.com/vicenteprf"
           class="card-footer"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i class="devicon-github-original"></i>
           <p>Github</p>
@@ -241,6 +261,7 @@
           href="https://wa.me/5585986353447"
           class="card-footer"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i class="fa-brands fa-whatsapp"></i>
           <p>WhatsApp</p>
@@ -248,7 +269,6 @@
         </a>
       </section>
     </footer>
+    <script src="js/script.js"></script>
   </body>
-
-  <script src="js/script.js"></script>
 </html>

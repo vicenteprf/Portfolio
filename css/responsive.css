@@ -1,32 +1,10 @@
-@media (max-width: 2220px) {
-  main p {
-    font-size: 2rem;
-  }
-
-  .section-apresentacao span {
-    font-size: 3.5rem;
-  }
-
-  .container-img {
-    width: 38rem;
-  }
-
-  .container-projeto {
-    flex-wrap: wrap;
-  }
-
-  .card-projeto {
-    height: auto;
-    width: auto;
-  }
-}
 @media (max-width: 1900px) {
   main p {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 
   .section-apresentacao span {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 
   main .container-subtitulo {
@@ -49,11 +27,11 @@
 
 @media (max-width: 1600px) {
   main p {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   .section-apresentacao span {
-    font-size: 2rem;
+    font-size: 2.3rem;
   }
 
   main .container-subtitulo {
@@ -61,7 +39,7 @@
   }
 
   .container-img {
-    width: 30rem;
+    width: 26rem;
   }
 }
 
@@ -70,13 +48,18 @@
     font-size: 0.9rem;
   }
 
+  .apresentacao {
+    gap: 5rem;
+  }
+
   .section-apresentacao p {
     font-size: 1.3rem;
   }
 
   .container-img {
-    width: 20rem;
+    width: 22rem;
   }
+
   .section-sobre-mim span {
     font-size: 1.5rem;
   }
@@ -98,39 +81,24 @@
   }
 
   main p {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .section-apresentacao span {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .container-img {
-    width: 22rem;
+    width: 25rem;
   }
 
   main .container-subtitulo {
     font-size: 1.6rem;
   }
-}
-
-@media (max-width: 1000px) {
-  header a {
-    font-size: 0.7rem;
-  }
-
-  .apresentacao {
-    margin-top: 2.5rem;
-    flex-direction: column-reverse;
-  }
 
   .container-footer {
     flex-wrap: wrap;
     gap: 2.5rem;
-  }
-
-  .dados {
-    font-size: 0.6rem;
   }
 }
 
@@ -153,28 +121,49 @@
     font-size: 1.5rem;
   }
 
+  .section-apresentacao span {
+    font-size: 2.2rem;
+  }
+
   .container-img {
     width: 22rem;
-  }
-
-  .container-footer {
-    gap: 1.5rem;
-  }
-
-  .card-footer i {
-    font-size: 1.5rem;
-  }
-
-  .card-footer {
-    font-size: 0.8rem;
-  }
-
-  .dados {
-    font-size: 0.4rem;
   }
 }
 
 @media (max-width: 600px) {
+  .nav-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 6, 51, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu ul {
+    width: 50%;
+    font-size: 2.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-menu {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 200;
+  }
+
   header a {
     font-size: 0.6rem;
   }
