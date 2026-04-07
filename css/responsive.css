@@ -207,6 +207,9 @@
     width: 100%;
   }
 
+  .titulo-secao {
+    color: white;
+  }
   .card-projeto {
     display: flex;
     flex-direction: row;
@@ -278,5 +281,9 @@
 
   .section-apresentacao span {
     font-size: 1.3rem;
+  }
+
+  .container-footer {
+    gap: 0.2rem;
   }
 }
