@@ -265,4 +265,18 @@
     font-size: 0.55rem;
     padding: 0.25rem 0.5rem;
   }
+
+  .container-footer {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+@media (max-width: 400px) {
+  .section-apresentacao p {
+    font-size: 1rem;
+  }
+
+  .section-apresentacao span {
+    font-size: 1.3rem;
+  }
 }
