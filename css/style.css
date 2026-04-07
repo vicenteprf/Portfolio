@@ -288,13 +288,15 @@ main .container-subtitulo {
     0 0 0.6rem #8a2be266;
   border-radius: 0.8rem;
   overflow: hidden;
+  max-width: 22rem;
+}
+
+.card-projeto-info {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.9rem;
-  max-width: 22rem;
-  max-height: 26rem;
+  gap: 0.8rem;
 }
 
 .card-projeto:hover {
@@ -327,6 +329,13 @@ main .container-subtitulo {
   padding: 1rem;
 }
 
+.tecnologias {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
 .tecnologias i {
   font-size: 1.5rem;
   width: 24px;
@@ -344,7 +353,7 @@ main .container-subtitulo {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   gap: 2rem;
 }
 

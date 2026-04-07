@@ -96,9 +96,8 @@
     font-size: 1.6rem;
   }
 
-  .container-footer {
-    flex-wrap: wrap;
-    gap: 2.5rem;
+  .dados {
+    display: none;
   }
 }
 
@@ -131,6 +130,7 @@
 }
 
 @media (max-width: 600px) {
+  /* ── Menu ── */
   .nav-menu {
     display: none;
     position: fixed;
@@ -165,6 +165,7 @@
     z-index: 200;
   }
 
+  /* ── Apresentação ── */
   header a {
     font-size: 0.6rem;
   }
@@ -198,5 +199,70 @@
 
   .section-sobre-mim p {
     font-size: 0.9rem;
+  }
+  /* ── Cards de projeto — layout horizontal ── */
+  .container-projeto {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .card-projeto {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    max-height: none;
+    height: 8rem;
+    width: 100%;
+  }
+
+  .card-projeto img {
+    width: 7rem;
+    min-width: 7rem;
+    height: 100%;
+    border-radius: 0;
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
+    border-top-right-radius: 0;
+  }
+
+  .card-projeto-info {
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    /* overflow: hidden; */
+  }
+
+  .card-projeto h3 {
+    font-size: 0.9rem;
+  }
+
+  .card-projeto p {
+    font-size: 0.65rem;
+    height: auto;
+    padding: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .tecnologias {
+    display: none;
+  }
+
+  .links-projeto {
+    padding-bottom: 0;
+    gap: 0.4rem;
+    justify-content: center;
+  }
+
+  .links-projeto a {
+    font-size: 0.55rem;
+    padding: 0.25rem 0.5rem;
   }
 }
