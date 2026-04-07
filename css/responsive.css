@@ -285,7 +285,16 @@
     font-size: 0.4rem;
     gap: 0.1rem;
   }
+
+  .card-footer {
+    width: 6rem;
+  }
+
+  .card-footer p {
+    display: none;
+  }
 }
+
 @media (max-width: 400px) {
   .section-apresentacao p {
     font-size: 1rem;
