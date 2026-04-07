@@ -267,6 +267,7 @@ main .container-subtitulo {
 }
 
 .titulo-secao {
+  color: white;
   font-size: 2.5rem;
   text-transform: uppercase;
 }
