@@ -289,7 +289,7 @@ main .container-subtitulo {
     0 0 0.6rem #8a2be266;
   border-radius: 0.8rem;
   overflow: hidden;
-  max-width: 22rem;
+  max-width: 24rem;
 }
 
 .card-projeto-info {
@@ -325,7 +325,7 @@ main .container-subtitulo {
 
 .card-projeto p {
   height: 3rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-align: center;
   padding: 1rem;
 }
