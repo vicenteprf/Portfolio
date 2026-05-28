@@ -1,8 +1,74 @@
+/* ============================================================
+   TOKENS — variáveis globais de design
+   ============================================================ */
+:root {
+  /* Cores */
+  --cor-fundo: #000633;
+  --cor-primaria: #8a2be2;
+  --cor-primaria-60: #8a2be299;
+  --cor-primaria-40: #8a2be266;
+  --cor-texto: #ffffff;
+  --cor-texto-suave: #8b8a8a;
+  --cor-nav-link: #cfcccc;
+
+  /* Tipografia */
+  --fonte-base: "Montserrat", sans-serif;
+  --fs-hero: 2.5rem; /* parágrafo principal da apresentação  */
+  --fs-nome: 3.5rem; /* nome em destaque                     */
+  --fs-subtitulo: 2.5rem; /* subtítulo / h2 de seção              */
+  --fs-body: 1.8rem; /* parágrafos de conteúdo               */
+  --fs-card-titulo: 1.5rem;
+  --fs-card-body: 0.7rem;
+  --fs-icone-label: 0.8rem;
+
+  /* Espaçamentos recorrentes */
+  --radius-card: 0.8rem;
+  --radius-card-topo: var(--radius-card) var(--radius-card) 0.3rem 0.3rem;
+
+  /* Transições */
+  --transicao: 0.5s;
+  --transicao-rapida: 0.2s;
+
+  /* Sombras de glow (reutilizadas em múltiplos componentes) */
+  --glow-suave: 0 0 0.5rem var(--cor-primaria), 0 0 3rem var(--cor-primaria-40);
+
+  --glow-intenso:
+    0 0 0.5rem var(--cor-primaria), 0 0 1.8rem var(--cor-primaria-60),
+    0 0 3rem var(--cor-primaria-40);
+
+  --glow-sobre:
+    0 0 1rem var(--cor-primaria-60), 0 0 2rem var(--cor-primaria-40);
+
+  --glow-borda:
+    0 0 20px var(--cor-primaria), 0 0 50px var(--cor-primaria-60),
+    0 0 90px var(--cor-primaria-40);
+
+  --glow-card:
+    0 0 0.1rem var(--cor-primaria), 0 0 0.4rem var(--cor-primaria-60),
+    0 0 0.6rem var(--cor-primaria-40);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+/* Visualmente oculto mas acessível para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* marcação da estrutura */
   /* outline: 1px solid red; */
 }
 
@@ -11,31 +77,15 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  background: #000633;
+  font-family: var(--fonte-base);
+  background: var(--cor-fundo);
   display: flex;
   flex-direction: column;
 }
 
-header {
-  position: relative;
-  background: linear-gradient(to bottom, #8a2be2 -10%, #000633);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  text-transform: uppercase;
-  padding: 0 4rem;
-}
-
-.nav-menu ul {
-  display: flex;
-}
-
-.btn-menu {
-  display: none;
-}
-
+/* ============================================================
+   ANIMAÇÃO DE ENTRADA (IntersectionObserver)
+   ============================================================ */
 .secao {
   opacity: 0;
   filter: blur(1rem);
@@ -47,12 +97,33 @@ header {
   opacity: 1;
   filter: blur(0);
   transform: translateY(0);
-  transition: all 0.5s;
+  transition: all var(--transicao);
+}
+
+/* ============================================================
+   HEADER & NAVEGAÇÃO
+   ============================================================ */
+header {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    var(--cor-primaria) -10%,
+    var(--cor-fundo)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  padding: 0 4rem;
+}
+
+header img {
+  width: 5rem;
+  height: auto;
 }
 
 header ul {
   display: flex;
-  flex-direction: row;
   gap: 2rem;
   margin: 2rem;
   list-style: none;
@@ -60,21 +131,28 @@ header ul {
 
 header a {
   text-decoration: none;
-  color: #cfcccc;
+  color: var(--cor-nav-link);
   cursor: pointer;
 }
 
 header a:hover {
-  color: white;
+  color: var(--cor-texto);
   font-weight: 600;
-  transition: 0.5s;
+  transition: var(--transicao);
 }
 
-header img {
-  height: auto;
-  width: 5rem;
+/* Botão hamburguer — oculto por padrão, visível em mobile via responsive.css */
+.btn-menu {
+  display: none;
 }
 
+.nav-menu ul {
+  display: flex;
+}
+
+/* ============================================================
+   MAIN — container geral
+   ============================================================ */
 main {
   display: flex;
   flex-direction: column;
@@ -83,15 +161,9 @@ main {
   margin: auto;
 }
 
-.apresentacao {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10rem;
-  width: 90%;
-}
-
+/* ============================================================
+   SEÇÃO APRESENTAÇÃO
+   ============================================================ */
 .container-apresentacao {
   padding-top: 8rem;
   display: flex;
@@ -100,28 +172,41 @@ main {
   align-items: center;
 }
 
+.apresentacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+  width: 90%;
+}
+
+/* "Olá, eu sou o…" */
 main p {
-  font-size: 2.5rem;
+  font-size: var(--fs-hero);
   font-weight: 500;
-  color: white;
+  color: var(--cor-texto);
   display: flex;
   align-items: center;
   gap: 0.8rem;
 }
 
-.section-apresentacao span {
-  color: blueviolet;
+/* Nome em destaque */
+.section-apresentacao span,
+.nome-destaque {
+  color: var(--cor-primaria);
   font-weight: 600;
-  font-size: 3.5rem;
+  font-size: var(--fs-nome);
 }
 
-main .container-subtitulo {
-  color: #8b8a8a;
-  font-size: 2.5rem;
+/* "Desenvolvedor Full Stack" */
+h2.container-subtitulo {
+  color: var(--cor-texto-suave);
+  font-size: var(--fs-subtitulo);
   font-weight: 400;
   text-align: center;
 }
 
+/* Foto de perfil */
 .container-img {
   position: relative;
   width: 40rem;
@@ -133,15 +218,10 @@ main .container-subtitulo {
 .borda {
   position: absolute;
   inset: 0;
-  border: 1rem solid #8a2be2;
+  border: 1rem solid var(--cor-primaria);
   border-radius: 50%;
   mask: radial-gradient(circle at left, black 90%);
-
-  box-shadow:
-    0 0 20px #8a2be2,
-    0 0 50px #8a2be299,
-    0 0 90px #8a2be266;
-
+  box-shadow: var(--glow-borda);
   z-index: 4;
 }
 
@@ -149,23 +229,13 @@ main .container-subtitulo {
   width: 100%;
   z-index: 4;
   mask-image: radial-gradient(circle at top, black 50%, transparent 80%);
-
-  /* efeito 3D: imagem “saindo” da forma */
+  /* efeito 3D: imagem "saindo" da forma */
   transform: translate(-10px, -30px);
 }
 
-.section-sobre-mim h2 {
-  color: white;
-  font-size: 2.5rem;
-  font-weight: 400;
-}
-
-.section-sobre-mim p {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #8b8a8a;
-}
-
+/* ============================================================
+   SEÇÃO SOBRE MIM
+   ============================================================ */
 .section-sobre-mim {
   text-align: center;
   padding: 1rem;
@@ -175,28 +245,34 @@ main .container-subtitulo {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  box-shadow:
-    0 0 1rem #8a2be299,
-    0 0 2rem #8a2be266;
+  box-shadow: var(--glow-sobre);
 }
 
+.section-sobre-mim h2 {
+  color: var(--cor-texto);
+  font-size: var(--fs-subtitulo);
+  font-weight: 400;
+}
+
+.section-sobre-mim p {
+  text-align: center;
+  font-size: var(--fs-body);
+  color: var(--cor-texto-suave);
+}
+
+/* ============================================================
+   SEÇÃO HABILIDADES
+   ============================================================ */
 #habilidades {
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.container-habilidades h2 {
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 .container-habilidades {
   height: 20rem;
-  color: white;
+  color: var(--cor-texto);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -204,9 +280,14 @@ main .container-subtitulo {
   margin: 10rem 0;
 }
 
+.container-habilidades h2 {
+  font-size: var(--fs-subtitulo);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .container-icones {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 4rem;
@@ -216,49 +297,40 @@ main .container-subtitulo {
 .icones {
   width: 5.8rem;
   height: 6.8rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-
-  color: white;
+  color: var(--cor-texto);
   font-size: 3rem;
-  border-radius: 0.8rem 0.8rem 0.3rem 0.3rem;
-  box-shadow:
-    0 0 0.5rem #8a2be2,
-    0 0 3rem #8a2be266;
+  border-radius: var(--radius-card-topo);
+  box-shadow: var(--glow-suave);
   cursor: pointer;
 }
 
-.icones i {
-  font-size: 3rem;
+/* font-size já herdado de .icones — regra redundante removida */
+.icones span {
+  font-size: var(--fs-icone-label);
+  text-align: center;
 }
 
-.icones span {
-  font-size: 0.8rem;
-  text-align: center;
+.icones:hover {
+  transform: scale(1.1);
+  box-shadow: var(--glow-intenso);
+  transition: var(--transicao);
 }
 
 .icones:hover span {
   font-weight: 600;
 }
 
-.icones:hover {
-  transition: 0.5s;
-  transform: scale(1.1);
-
-  box-shadow:
-    0 0 0.5rem #8a2be2,
-    0 0 1.8rem #8a2be299,
-    0 0 3rem #8a2be266;
-}
-
+/* ============================================================
+   SEÇÃO PROJETOS
+   ============================================================ */
 #container-projetos {
   min-height: 100vh;
   padding: 4rem 0;
-  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,8 +339,8 @@ main .container-subtitulo {
 }
 
 .titulo-secao {
-  color: white;
-  font-size: 2.5rem;
+  color: var(--cor-texto);
+  font-size: var(--fs-subtitulo);
   text-transform: uppercase;
 }
 
@@ -276,63 +348,54 @@ main .container-subtitulo {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
   flex-wrap: wrap;
   gap: 3rem;
 }
 
 .card-projeto {
-  border: 0.1rem solid #8a2be2;
-  box-shadow:
-    0 0 0.1rem #8a2be2,
-    0 0 0.4rem #8a2be299,
-    0 0 0.6rem #8a2be266;
-  border-radius: 0.8rem;
+  border: 0.1rem solid var(--cor-primaria);
+  box-shadow: var(--glow-card);
+  border-radius: var(--radius-card);
   overflow: hidden;
   max-width: 24rem;
 }
 
-.card-projeto-info {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.8rem;
-}
-
 .card-projeto:hover {
-  transition: 0.5s;
   transform: scale(1.1);
-
-  border: 0.1rem solid #8a2be2;
-  border-bottom: 0.4rem solid #8a2be2;
+  border-bottom-width: 0.4rem;
+  transition: var(--transicao);
 }
 
 .card-projeto img {
   height: 11rem;
-  object-fit: cover;
-  margin: 0;
   width: 100%;
-  border-top-left-radius: 0.8rem;
-  border-top-right-radius: 0.8rem;
+  object-fit: cover;
+  /* herda border-radius do overflow:hidden do pai */
+}
+
+.card-projeto-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
 }
 
 .card-projeto h3 {
-  font-size: 1.5rem;
+  font-size: var(--fs-card-titulo);
   text-align: center;
-  color: white;
+  color: var(--cor-texto);
 }
 
 .card-projeto p {
   height: 3rem;
-  font-size: 0.7rem;
+  font-size: var(--fs-card-body);
   text-align: center;
   padding: 1rem;
 }
 
 .tecnologias {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   gap: 0.4rem;
 }
@@ -341,44 +404,46 @@ main .container-subtitulo {
   font-size: 1.5rem;
   width: 24px;
   height: 24px;
-  color: #8a2be2;
+  color: var(--cor-primaria);
   cursor: pointer;
-}
-
-.devicon-typescript-plain {
-  font-size: 0.1rem;
 }
 
 .links-projeto {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
   padding-bottom: 0.5rem;
   gap: 2rem;
 }
 
 .links-projeto a {
-  font-size: 0.7rem;
+  font-size: var(--fs-card-body);
   padding: 0.4rem 1rem;
   text-decoration: none;
-  color: white;
-  background: linear-gradient(#8a2be2, #000633);
+  color: var(--cor-texto);
+  background: linear-gradient(var(--cor-primaria), var(--cor-fundo));
   border-radius: 0.5rem;
 }
 
 .links-projeto a:hover {
   background: transparent;
-  border: 0.1rem solid #8a2be2;
-  color: #8a2be2;
-  transition: 0.5s;
+  border: 0.1rem solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  transition: var(--transicao);
 }
 
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer {
-  background: linear-gradient(to top, #8a2be2 -70%, #000633 45%);
+  background: linear-gradient(
+    to top,
+    var(--cor-primaria) -70%,
+    var(--cor-fundo) 45%
+  );
 }
 
-.container-footer {
+address {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -390,7 +455,7 @@ footer {
 }
 
 .card-footer {
-  color: white;
+  color: var(--cor-texto);
   font-size: 0.8rem;
   display: flex;
   flex-direction: column;
@@ -398,22 +463,21 @@ footer {
   align-items: center;
   gap: 0.5rem;
   width: 8rem;
-  margin-top: 7rem;
-  margin-bottom: 5rem;
+  margin: 7rem 0 5rem;
   cursor: pointer;
 }
 
 .card-footer i {
   font-size: 2rem;
-  color: white;
+  color: var(--cor-texto);
 }
 
 .dados {
-  color: #fff;
+  color: var(--cor-texto);
   font-weight: 600;
 }
 
 .card-footer:hover {
-  transition: 0.2s;
   transform: scale(1.2);
+  transition: var(--transicao-rapida);
 }
