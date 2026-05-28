@@ -23,7 +23,7 @@
   }
   .card-projeto {
     height: auto;
-    width: auto;
+    width: 17.5rem;
   }
 }
 
@@ -83,6 +83,8 @@
 
   .container-apresentacao {
     padding-top: 5rem;
+    padding-bottom: 4rem;
+    min-height: auto;
   }
 
   .apresentacao {
@@ -103,8 +105,27 @@
     line-height: 1.25;
   }
 
+  h2.container-subtitulo {
+    text-align: center;
+  }
+
+  .texto-apresentacao {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .section-apresentacao span,
+  .nome-destaque {
+    font-size: clamp(3.4rem, 10vw, 4.4rem);
+  }
+
+  .acoes-apresentacao {
+    justify-content: center;
+  }
+
   .section-sobre-mim {
-    margin-top: 3.5rem;
+    margin: 1rem auto 4rem;
     padding: 1.5rem;
   }
 
@@ -129,7 +150,7 @@
 
   .container-projeto {
     display: grid;
-    grid-template-columns: repeat(2, minmax(17rem, 1fr));
+    grid-template-columns: repeat(2, 17.5rem);
     width: 100%;
     align-items: stretch;
   }
@@ -185,7 +206,7 @@
 
   .card-projeto {
     max-width: 32rem;
-    width: 100%;
+    width: min(100%, 32rem);
     justify-self: center;
   }
 
@@ -260,8 +281,36 @@
     gap: 2rem;
   }
 
+  .texto-apresentacao {
+    max-width: 28rem;
+    margin-top: 1.4rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .section-apresentacao span,
+  .nome-destaque {
+    font-size: clamp(2.9rem, 14vw, 4rem);
+    white-space: normal;
+  }
+
+  .acoes-apresentacao {
+    flex-wrap: wrap;
+    margin-top: 1.8rem;
+  }
+
+  .acoes-apresentacao a {
+    min-width: 8.5rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
   .container-img {
     width: min(15rem, 70vw);
+  }
+
+  .container-img::before {
+    inset: 1rem;
   }
 
   .borda {
@@ -271,7 +320,7 @@
   /* Sobre mim */
   .section-sobre-mim {
     padding: 1.5rem;
-    margin-top: 2.5rem;
+    margin: 1rem auto 3rem;
   }
   .section-sobre-mim p {
     line-height: 1.7;
@@ -333,6 +382,7 @@
     justify-content: space-between;
     gap: 0.5rem;
     padding: 0.6rem 0.8rem;
+    height: auto;
   }
 
   .card-projeto h3 {
@@ -352,14 +402,13 @@
   }
 
   .tecnologias {
-    display: none;
-    
+    display: flex;
   }
 
   .links-projeto {
     padding-bottom: 0;
     gap: 0.5rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 
@@ -404,6 +453,20 @@
 
   .container-img {
     width: min(13rem, 72vw);
+  }
+
+  .acoes-apresentacao {
+    width: 100%;
+  }
+
+  .acoes-apresentacao a {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .section-apresentacao span,
+  .nome-destaque {
+    font-size: clamp(2.6rem, 15vw, 3.3rem);
   }
 
   .container-icones {

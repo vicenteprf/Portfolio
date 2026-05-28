@@ -166,6 +166,8 @@ main {
    ============================================================ */
 .container-apresentacao {
   padding-top: 8rem;
+  padding-bottom: 6rem;
+  min-height: calc(100vh - 5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -191,11 +193,19 @@ main p {
 }
 
 /* Nome em destaque */
+.section-apresentacao p {
+  display: block;
+  line-height: 1.1;
+}
+
 .section-apresentacao span,
 .nome-destaque {
+  display: block;
   color: var(--cor-primaria);
   font-weight: 600;
-  font-size: var(--fs-nome);
+  font-size: clamp(4.2rem, 5.6vw, 5.4rem);
+  line-height: 1;
+  white-space: nowrap;
 }
 
 /* "Desenvolvedor Full Stack" */
@@ -203,7 +213,46 @@ h2.container-subtitulo {
   color: var(--cor-texto-suave);
   font-size: var(--fs-subtitulo);
   font-weight: 400;
+  text-align: left;
+}
+
+.texto-apresentacao {
+  display: block;
+  max-width: 35rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--cor-texto);
+}
+
+.acoes-apresentacao {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.4rem;
+}
+
+.acoes-apresentacao a {
+  min-width: 9rem;
+  padding: 0.9rem 1.4rem;
+  border: 0.1rem solid var(--cor-primaria);
+  border-radius: 0.5rem;
+  color: var(--cor-texto);
+  font-size: 1rem;
+  font-weight: 700;
   text-align: center;
+  text-decoration: none;
+  transition: var(--transicao-rapida);
+}
+
+.acoes-apresentacao a:first-child {
+  background: linear-gradient(var(--cor-primaria), var(--cor-fundo));
+  box-shadow: 0 0 1.2rem var(--cor-primaria-40);
+}
+
+.acoes-apresentacao a:hover {
+  transform: translateY(-0.15rem);
+  box-shadow: var(--glow-suave);
 }
 
 /* Foto de perfil */
@@ -213,6 +262,24 @@ h2.container-subtitulo {
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
+  border-radius: 50%;
+  isolation: isolate;
+}
+
+.container-img::before {
+  content: "";
+  position: absolute;
+  inset: 2rem;
+  z-index: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(138, 43, 226, 0.18),
+      transparent 42%
+    ),
+    linear-gradient(145deg, #020834 0%, #00031f 58%, #070b3d 100%);
+  box-shadow: inset 0 -4rem 5rem rgba(0, 0, 0, 0.35);
 }
 
 .borda {
@@ -222,7 +289,7 @@ h2.container-subtitulo {
   border-radius: 50%;
   mask: radial-gradient(circle at left, black 90%);
   box-shadow: var(--glow-borda);
-  z-index: 4;
+  z-index: 3;
 }
 
 .container-img img {
@@ -237,14 +304,18 @@ h2.container-subtitulo {
    SEÇÃO SOBRE MIM
    ============================================================ */
 .section-sobre-mim {
+  scroll-margin-top: 8rem;
   text-align: center;
-  padding: 1rem;
-  margin-top: 5rem;
+  width: min(100%, 72rem);
+  padding: 2.5rem;
+  margin: 2rem auto 6rem;
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  background: rgba(5, 11, 63, 0.55);
+  border: 0.1rem solid var(--cor-primaria-40);
   box-shadow: var(--glow-sobre);
 }
 
@@ -255,6 +326,9 @@ h2.container-subtitulo {
 }
 
 .section-sobre-mim p {
+  display: block;
+  max-width: 62rem;
+  line-height: 1.7;
   text-align: center;
   font-size: var(--fs-body);
   color: var(--cor-texto-suave);
@@ -345,29 +419,34 @@ h2.container-subtitulo {
 }
 
 .container-projeto {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 17.5rem);
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 3rem;
+  gap: 1.6rem;
+  width: 100%;
 }
 
 .card-projeto {
-  border: 0.1rem solid var(--cor-primaria);
-  box-shadow: var(--glow-card);
+  width: 17.5rem;
+  height: 100%;
+  min-height: 22rem;
+  border: 0.1rem solid var(--cor-primaria-60);
+  background: rgba(5, 11, 63, 0.72);
+  box-shadow: 0 0 0.8rem rgba(138, 43, 226, 0.16);
   border-radius: var(--radius-card);
   overflow: hidden;
-  max-width: 24rem;
+  max-width: none;
 }
 
 .card-projeto:hover {
   transform: scale(1.1);
   border-bottom-width: 0.4rem;
-  transition: var(--transicao);
+  transition: var(--transicao-rapida);
 }
 
 .card-projeto img {
-  height: 11rem;
+  height: 7.5rem;
   width: 100%;
   object-fit: cover;
   /* herda border-radius do overflow:hidden do pai */
@@ -376,34 +455,56 @@ h2.container-subtitulo {
 .card-projeto-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.8rem;
+  gap: 1rem;
+  height: calc(100% - 7.5rem);
+  padding: 1.2rem;
 }
 
 .card-projeto h3 {
-  font-size: var(--fs-card-titulo);
-  text-align: center;
+  font-size: 1.2rem;
+  text-align: left;
   color: var(--cor-texto);
 }
 
 .card-projeto p {
-  height: 3rem;
-  font-size: var(--fs-card-body);
-  text-align: center;
-  padding: 1rem;
+  display: -webkit-box;
+  height: auto;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  text-align: left;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .tecnologias {
   display: flex;
-  justify-content: center;
-  gap: 0.4rem;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.tecnologias span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.55rem;
+  border: 0.1rem solid var(--cor-primaria-60);
+  border-radius: 999px;
+  color: var(--cor-texto);
+  font-size: 0.72rem;
 }
 
 .tecnologias i {
-  font-size: 1.5rem;
-  width: 24px;
-  height: 24px;
+  font-size: 0.9rem;
+  width: auto;
+  height: auto;
   color: var(--cor-primaria);
   cursor: pointer;
 }
@@ -411,14 +512,15 @@ h2.container-subtitulo {
 .links-projeto {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-bottom: 0.5rem;
-  gap: 2rem;
+  justify-content: flex-start;
+  padding-bottom: 0;
+  gap: 0.6rem;
 }
 
 .links-projeto a {
-  font-size: var(--fs-card-body);
-  padding: 0.4rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
   text-decoration: none;
   color: var(--cor-texto);
   background: linear-gradient(var(--cor-primaria), var(--cor-fundo));
@@ -429,7 +531,7 @@ h2.container-subtitulo {
   background: transparent;
   border: 0.1rem solid var(--cor-primaria);
   color: var(--cor-primaria);
-  transition: var(--transicao);
+  transition: scale(1.1);
 }
 
 /* ============================================================
