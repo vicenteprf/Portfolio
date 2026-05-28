@@ -62,6 +62,11 @@
   .section-sobre-mim p {
     font-size: 1rem;
   }
+
+  .container-projeto {
+    display: grid;
+    grid-template-columns: repeat(3, 17.5rem);
+  }
 }
 
 /* ── 1100px — quebra para coluna ─────────────────────────── */
