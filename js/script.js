@@ -330,7 +330,23 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     // passando por todas as seções do meio, e o efeito de empilhamento
     // mostrava cada uma aparecendo e sumindo no caminho até o destino.
     // (o html tem scroll-behavior: smooth no CSS; "instant" ignora isso)
+    // Mostra a seção de destino já pronta, sem a animação de entrada.
+    // Sem isso, depois do pulo ela ainda vinha deslizando da lateral e
+    // desfocada, e parecia fora do lugar (principalmente no celular).
+    // A classe "sem-transicao" desliga as transições por um instante.
+    document.documentElement.classList.add("sem-transicao");
+    [alvo, ...alvo.querySelectorAll(".secao, #sobre")]
+      .filter((el) => el.matches(".secao, #sobre"))
+      .forEach((el) => el.classList.add("show"));
+
     window.scrollTo({ top: topo, behavior: "instant" });
+
+    // dois quadros depois as transições voltam ao normal
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() =>
+        document.documentElement.classList.remove("sem-transicao"),
+      ),
+    );
 
     // Atualiza o empilhamento na hora, sem esperar o próximo quadro.
     // Senão, por um instante, as seções do meio aparecem com os valores

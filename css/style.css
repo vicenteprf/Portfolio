@@ -902,6 +902,14 @@ footer {
     transform 1s ease-out;
 }
 
+/* Ao pular para uma seção pelo menu, o JS coloca esta classe no <html>
+   por um instante: a seção aparece direto no lugar, sem animar */
+.sem-transicao *,
+.sem-transicao *::before,
+.sem-transicao *::after {
+  transition: none !important;
+}
+
 /* ── Empilhamento (seções com a classe .empilhar) ──
    A seção trava no lugar (sticky) e, conforme a pessoa rola, vai encolhendo
    e sumindo enquanto a próxima sobe por cima. As variáveis vêm do script.js:
