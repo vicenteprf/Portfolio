@@ -3,10 +3,11 @@
 
    O style.css já tem a versão do celular. Aqui ficam só as
    mudanças, sempre com min-width (do menor para o maior):
-     480px  — celular largo: botão da apresentação menor
+     480px  — celular largo: botão da apresentação menor;
+              habilidades com 4 por linha
      600px  — tablet pequeno: menu horizontal, mais espaço nas seções,
               apresentação mais larga, habilidades com 4 por linha
-     640px  — projetos em 2 colunas
+     640px  — projetos em 2 colunas; cards de habilidade um pouco maiores
      768px  — tablet: mais espaço entre seções, habilidades com 6 por
               linha (ainda compactas), contato em grade
      960px  — apresentação com mais espaço nas laterais; cards de
@@ -24,6 +25,10 @@
     min-width: 8.5rem;
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
+  }
+
+  .container-icones-new {
+    --cols: 4;
   }
 }
 
@@ -91,6 +96,20 @@
   /* com 2 ou mais colunas, cards da mesma linha ficam com a mesma altura */
   .card-projeto-new {
     min-height: 23rem;
+  }
+
+  /* cards de habilidade: tamanho compacto do tablet (no celular são menores) */
+  .skill-card-new {
+    gap: 0.6rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .skill-card-new i {
+    font-size: 2.2rem;
+  }
+
+  .skill-card-new > span {
+    font-size: 0.78rem;
   }
 }
 
