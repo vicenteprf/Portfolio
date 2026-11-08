@@ -1,28 +1,77 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vicente Ramos — Desenvolvedor Full Stack</title>
 
-    <!-- SEO e preview de redes sociais -->
+    <!-- SEO -->
     <meta
       name="description"
-      content="Portfólio de Vicente Ramos, desenvolvedor Full Stack com foco em JavaScript, TypeScript e React. Em transição de carreira, com projetos práticos em web development."
+      content="Portfólio de Vicente Ramos, desenvolvedor Full Stack em Fortaleza. Aplicações web com TypeScript, React, Node.js, Express e PostgreSQL."
     />
+    <meta name="author" content="Vicente Ramos" />
+    <!-- URL oficial da página (evita conteúdo duplicado para o Google) -->
+    <link rel="canonical" href="https://vicenteprf.github.io/Portfolio/" />
+    <meta name="theme-color" content="#000633" />
+
+    <!-- Preview de redes sociais (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Vicente Ramos" />
     <meta
       property="og:title"
       content="Vicente Ramos — Desenvolvedor Full Stack"
     />
     <meta
       property="og:description"
-      content="Portfólio de Vicente Ramos, desenvolvedor Full Stack com foco em JavaScript, TypeScript e React."
+      content="Aplicações web com TypeScript, React, Node.js, Express e PostgreSQL."
     />
-    <meta property="og:url" content="https://vicenteprf.github.io" />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vicenteprf.github.io/Portfolio/" />
+    <meta
+      property="og:image"
+      content="https://vicenteprf.github.io/Portfolio/assets/Logo_transparente.png"
+    />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta
+      property="og:image:alt"
+      content="Logo de Vicente Ramos — Desenvolvedor Full Stack"
+    />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Dados estruturados: ajudam o Google a entender que a página é de
+         uma pessoa, qual a profissão e quais são os perfis dela -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Vicente Ramos",
+        "jobTitle": "Desenvolvedor Full Stack",
+        "url": "https://vicenteprf.github.io/Portfolio/",
+        "image": "https://vicenteprf.github.io/Portfolio/assets/IMG_20251230_150253_435.PNG",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Fortaleza",
+          "addressRegion": "CE",
+          "addressCountry": "BR"
+        },
+        "knowsAbout": [
+          "TypeScript",
+          "React",
+          "Node.js",
+          "Express",
+          "PostgreSQL"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/vicente-ramos-dev/",
+          "https://github.com/vicenteprf"
+        ]
+      }
+    </script>
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/Logo_transparente.png" />
+    <link rel="icon" href="assets/Logo_transparente.png" type="image/png" />
 
     <!-- CSS externo -->
     <link
@@ -42,19 +91,44 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- Sem JavaScript as animações de entrada nunca rodam e o conteúdo
+         ficaria invisível (opacity: 0). Aqui ele aparece normalmente. -->
+    <noscript>
+      <style>
+        .secao > *,
+        #sobre {
+          opacity: 1 !important;
+          filter: none !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
-    <header>
-      <img src="assets/Logo_transparente.png" alt="Logo Vicente Ramos" />
+    <!-- Link "pular para o conteúdo": aparece só ao navegar pelo teclado (Tab)
+         e leva direto ao conteúdo principal, sem passar pelo menu -->
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+      <a class="site-brand" href="#container-apresentacao">
+        <img
+          src="assets/Logo_transparente.png"
+          alt="Vicente Ramos — início"
+          width="1024"
+          height="1024"
+        />
+      </a>
 
       <button
+        type="button"
         id="btn-menu"
         class="btn-menu"
         aria-label="Abrir menu"
         aria-controls="nav-menu"
         aria-expanded="false"
       >
-        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
       </button>
 
       <nav id="nav-menu" class="nav-menu" aria-label="Menu principal">
@@ -74,355 +148,453 @@
       </nav>
     </header>
 
-    <main>
+    <main id="conteudo" tabindex="-1">
       <section
         id="container-apresentacao"
         class="container-apresentacao"
         aria-labelledby="titulo-apresentacao"
+        tabindex="-1"
       >
         <div class="apresentacao">
           <div class="section-apresentacao">
-            <p>Olá, eu sou o<span class="nome-destaque">Vicente Ramos</span></p>
-            <h1 id="titulo-apresentacao" class="sr-only">
-              Vicente Ramos — Desenvolvedor Full Stack
+            <p aria-hidden="true">Olá, eu sou o</p>
+
+            <h1 id="titulo-apresentacao" class="nome-destaque">
+              Vicente Ramos
             </h1>
 
-            <h2 class="container-subtitulo">Desenvolvedor Full Stack</h2>
+            <!-- Subtítulo, não título de seção: por isso <p> e não <h2> -->
+            <p class="container-subtitulo">Desenvolvedor Full Stack</p>
 
             <p class="texto-apresentacao">
-              Desenvolvedor com foco em JavaScript, TypeScript e React, criando
-              interfaces claras, responsivas e funcionais.
+              Desenvolvedor com foco em TypeScript, React e Node.js, da
+              interface responsiva à API que sustenta o sistema.
             </p>
 
-            <div class="acoes-apresentacao" aria-label="Ações principais">
-              <a href="#container-projetos">Ver projetos</a>
+            <div class="acoes-apresentacao">
+              <a
+                target="_blank"
+                href="assets/Vicente_Ramos_Curriculo.pdf"
+                download="Vicente_Ramos_Curriculo.pdf"
+                aria-label="Baixar currículo de Vicente Ramos (PDF)"
+              >
+                <i class="fa-solid fa-download" aria-hidden="true"></i>
+                Baixar currículo
+              </a>
             </div>
           </div>
 
           <div class="container-img">
-            <div class="borda"></div>
+            <div class="borda" aria-hidden="true"></div>
 
             <img
               src="assets/IMG_20251230_150253_435.PNG"
               alt="Foto de perfil de Vicente Ramos"
+              width="1051"
+              height="1027"
+              fetchpriority="high"
             />
           </div>
         </div>
       </section>
 
-      <section
-        id="sobre"
-        class="section-sobre-mim secao"
-        aria-labelledby="titulo-sobre"
-      >
-        <h2 id="titulo-sobre">Sobre mim</h2>
-        <p>
-          Desenvolvedor Full Stack, com foco em JavaScript, TypeScript e React.
-          Venho desenvolvendo projetos práticos de aplicações web, aplicando
-          conceitos de componentização, versionamento com Git e boas práticas de
-          desenvolvimento. Possuo experiência profissional anterior na área de
-          logística, onde desenvolvi habilidades como resolução de problemas,
-          organização e trabalho em equipe — competências que hoje aplico no
-          desenvolvimento de software. Busco minha primeira oportunidade como
-          desenvolvedor júnior, com o objetivo de evoluir tecnicamente,
-          contribuir com o time e construir soluções eficientes.
-        </p>
-      </section>
+      <!-- Envolve o "Sobre mim" para o efeito de empilhamento (ver style.css) -->
+      <div class="empilhar-sobre empilhar">
+        <section
+          id="sobre"
+          class="section-sobre-mim"
+          aria-labelledby="titulo-sobre"
+          tabindex="-1"
+        >
+          <h2 id="titulo-sobre">Sobre mim</h2>
+          <p>
+            Desenvolvedor Full Stack com foco em TypeScript, React e Node.js.
+            Desenvolvo aplicações web completas, do front-end componentizado às
+            APIs REST integradas ao PostgreSQL, com versionamento no Git e boas
+            práticas de desenvolvimento. A experiência anterior na logística me
+            deu organização, visão de processo e foco na resolução de problemas.
+          </p>
+        </section>
+      </div>
 
+      <!-- SEÇÃO HABILIDADES -->
       <section
         id="habilidades"
-        class="secao"
+        class="secao empilhar"
         aria-labelledby="titulo-habilidades"
       >
-        <div class="container-habilidades">
-          <h2 id="titulo-habilidades">Habilidades</h2>
-          <div class="container-icones">
-            <div class="icones">
-              <i class="devicon-html5-plain"></i><span>HTML 5</span>
+        <div class="skills-outer-card">
+          <h2 id="titulo-habilidades" class="titulo-secao">Habilidades</h2>
+
+          <div class="skills-grupos">
+            <!-- Frontend -->
+            <div class="skills-grupo">
+              <h3 id="skills-frontend" class="skills-grupo-titulo">Frontend</h3>
+              <ul
+                class="container-icones-new"
+                aria-labelledby="skills-frontend"
+              >
+                <li class="skill-card-new html5">
+                  <i class="devicon-html5-plain" aria-hidden="true"></i>
+                  <span>HTML 5</span>
+                </li>
+                <li class="skill-card-new css3">
+                  <i class="devicon-css3-plain" aria-hidden="true"></i>
+                  <span>CSS 3</span>
+                </li>
+                <li class="skill-card-new tailwind">
+                  <i class="devicon-tailwindcss-plain" aria-hidden="true"></i>
+                  <span>Tailwind</span>
+                </li>
+                <li class="skill-card-new javascript">
+                  <i class="devicon-javascript-plain" aria-hidden="true"></i>
+                  <span>JavaScript</span>
+                </li>
+                <li class="skill-card-new typescript">
+                  <i class="devicon-typescript-plain" aria-hidden="true"></i>
+                  <span>TypeScript</span>
+                </li>
+                <li class="skill-card-new react">
+                  <i class="devicon-react-plain" aria-hidden="true"></i>
+                  <span>React</span>
+                </li>
+              </ul>
             </div>
 
-            <div class="icones">
-              <i class="devicon-css3-plain"></i><span>CSS 3</span>
+            <!-- Backend -->
+            <div class="skills-grupo">
+              <h3 id="skills-backend" class="skills-grupo-titulo">Backend</h3>
+              <ul class="container-icones-new" aria-labelledby="skills-backend">
+                <li class="skill-card-new nodejs">
+                  <i class="devicon-nodejs-plain" aria-hidden="true"></i>
+                  <span>Node.js</span>
+                </li>
+                <li class="skill-card-new express">
+                  <i class="devicon-express-original" aria-hidden="true"></i>
+                  <span>Express</span>
+                </li>
+                <li class="skill-card-new prisma">
+                  <i class="devicon-prisma-plain" aria-hidden="true"></i>
+                  <span>Prisma</span>
+                </li>
+                <li class="skill-card-new nestjs">
+                  <i class="devicon-nestjs-plain" aria-hidden="true"></i>
+                  <span>NestJS</span>
+                </li>
+                <li class="skill-card-new postgresql">
+                  <i class="devicon-postgresql-plain" aria-hidden="true"></i>
+                  <span>PostgreSQL</span>
+                </li>
+              </ul>
             </div>
 
-            <div id="tailwind" class="icones">
-              <i class="devicon-tailwindcss-plain"></i><span>Tailwind</span>
-            </div>
-
-            <div id="javascript" class="icones">
-              <i class="devicon-javascript-plain"></i><span>JavaScript</span>
-            </div>
-
-            <div id="typescript" class="icones">
-              <i class="devicon-typescript-plain"></i><span>TypeScript</span>
-            </div>
-
-            <div class="icones">
-              <i class="devicon-react-plain"></i><span>React</span>
-            </div>
-
-            <div class="icones">
-              <i class="devicon-git-plain"></i><span>Git</span>
-            </div>
-
-            <div class="icones">
-              <i class="devicon-postgresql-plain"></i><span>PostgreSQL</span>
-            </div>
-
-            <div class="icones">
-              <i class="devicon-nodejs-plain"></i><span>Nodejs</span>
-            </div>
-
-            <div class="icones">
-              <i class="devicon-express-original"></i><span>Express</span>
+            <!-- Ferramentas -->
+            <div class="skills-grupo">
+              <h3 id="skills-ferramentas" class="skills-grupo-titulo">
+                Ferramentas
+              </h3>
+              <ul
+                class="container-icones-new"
+                aria-labelledby="skills-ferramentas"
+              >
+                <li class="skill-card-new git">
+                  <i class="devicon-git-plain" aria-hidden="true"></i>
+                  <span>Git</span>
+                </li>
+                <li class="skill-card-new docker">
+                  <i class="devicon-docker-plain" aria-hidden="true"></i>
+                  <span>Docker</span>
+                </li>
+                <li class="skill-card-new jest">
+                  <i class="devicon-jest-plain" aria-hidden="true"></i>
+                  <span>Jest</span>
+                </li>
+                <li class="skill-card-new supertest">
+                  <i
+                    class="fa-solid fa-vial-circle-check"
+                    aria-hidden="true"
+                  ></i>
+                  <span>Supertest</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- SEÇÃO PROJETOS -->
       <section
         id="container-projetos"
-        class="secao"
+        class="secao empilhar"
         aria-labelledby="titulo-projetos"
+        tabindex="-1"
       >
-        <h2 id="titulo-projetos" class="titulo-secao">Projetos</h2>
+        <div class="projects-outer-card">
+          <h2 id="titulo-projetos" class="titulo-secao">Projetos</h2>
 
-        <div class="container-projeto">
-          <article class="card-projeto">
-            <img
-              src="assets/calculadora.png"
-              alt="Captura de tela do projeto Calculadora"
-            />
-            <div class="card-projeto-info">
-              <h3>Calculadora</h3>
+          <div class="container-projeto">
+            <!-- Card 1: Gefina -->
+            <article
+              class="card-projeto-new"
+              aria-labelledby="projeto-gefina"
+            >
+              <div class="card-header-new">
+                <div class="card-icon-box" aria-hidden="true">
+                  <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+                </div>
+                <h3 id="projeto-gefina">Gefina</h3>
+              </div>
 
-              <p>
-                Calculadora desenvolvida com HTML, CSS e JavaScript, utilizando
-                manipulação do DOM e eventos.
+              <p class="card-description-new">
+                Aplicação de gestão financeira com dashboard e paginação,
+                organizada com issues e versionamento.
               </p>
 
-              <div class="tecnologias" aria-label="Tecnologias utilizadas">
-                <span
-                  ><i class="devicon-html5-plain" aria-label="HTML5"></i
-                ></span>
-                <span
-                  ><i class="devicon-css3-plain" aria-label="CSS3"></i
-                ></span>
-                <span
-                  ><i
-                    class="devicon-javascript-plain"
-                    aria-label="JavaScript"
-                  ></i
-                ></span>
-              </div>
+              <ul class="tecnologias-new" aria-label="Tecnologias utilizadas">
+                <li class="tech-pill-new">React</li>
+                <li class="tech-pill-new">TypeScript</li>
+                <li class="tech-pill-new">Express</li>
+                <li class="tech-pill-new">PostgreSQL</li>
+              </ul>
 
-              <div class="links-projeto">
+              <div class="links-projeto-new">
                 <a
-                  href="https://vicenteprf.github.io/calculadora/"
+                  href="https://gefina-bvmx.onrender.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Ver projeto Calculadora (abre em nova aba)"
-                  >Ver projeto</a
+                  class="btn-ver-projeto"
+                  aria-label="Ver projeto Gefina (abre em nova aba)"
                 >
+                  Ver projeto
+                </a>
                 <a
-                  href="https://github.com/vicenteprf/calculadora"
+                  href="https://github.com/vicenteprf/gefina"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Ver código da Calculadora no GitHub (abre em nova aba)"
-                  >Código</a
+                  class="btn-codigo-projeto"
+                  aria-label="Ver código do Gefina no GitHub (abre em nova aba)"
                 >
+                  Código
+                </a>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="card-projeto">
-            <img
-              src="assets/criptmoeda.png"
-              alt="Captura de tela do projeto Criptomoedas"
-            />
+            <!-- Card 2: Criptomoedas -->
+            <article
+              class="card-projeto-new"
+              aria-labelledby="projeto-criptomoedas"
+            >
+              <div class="card-header-new">
+                <div class="card-icon-box" aria-hidden="true">
+                  <i class="fa-brands fa-bitcoin" aria-hidden="true"></i>
+                </div>
+                <h3 id="projeto-criptomoedas">Criptomoedas</h3>
+              </div>
 
-            <div class="card-projeto-info">
-              <h3>Criptomoedas</h3>
-
-              <p>
+              <p class="card-description-new">
                 Aplicação React + TypeScript para visualização de dados de
-                criptomoedas em tempo real, consumindo uma API externa e
-                praticando organização de componentes com Vite.
+                criptomoedas em tempo real.
               </p>
 
-              <div class="tecnologias" aria-label="Tecnologias utilizadas">
-                <span
-                  ><i class="devicon-css3-plain" aria-label="CSS3"></i
-                ></span>
-                <span
-                  ><i
-                    class="devicon-typescript-plain"
-                    aria-label="TypeScript"
-                  ></i
-                ></span>
-                <span
-                  ><i class="devicon-react-original" aria-label="React"></i
-                ></span>
-              </div>
+              <ul class="tecnologias-new" aria-label="Tecnologias utilizadas">
+                <li class="tech-pill-new">React</li>
+                <li class="tech-pill-new">TypeScript</li>
+                <li class="tech-pill-new">CSS3</li>
+              </ul>
 
-              <div class="links-projeto">
+              <div class="links-projeto-new">
                 <a
                   href="https://criptmoeda.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="btn-ver-projeto"
                   aria-label="Ver projeto Criptomoedas (abre em nova aba)"
-                  >Ver projeto</a
                 >
+                  Ver projeto
+                </a>
                 <a
                   href="https://github.com/vicenteprf/criptmoeda"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="btn-codigo-projeto"
                   aria-label="Ver código de Criptomoedas no GitHub (abre em nova aba)"
-                  >Código</a
                 >
+                  Código
+                </a>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="card-projeto">
-            <img
-              src="assets/controle-de-tarefas.png"
-              alt="Captura de tela do projeto To do List"
-            />
-
-            <div class="card-projeto-info">
-              <h3>Controle de tarefas</h3>
-
-              <p>
-                Aplicação full stack de gerenciamento de tarefas com login
-                seguro, CRUD completo e recuperação de senha por e-mail.
-              </p>
-
-              <div class="tecnologias" aria-label="Tecnologias utilizadas">
-                <span><i class="devicon-tailwindcss-plain"></i></span>
-                <span><i class="devicon-react-plain"></i></span>
-                <span><i class="devicon-nodejs-plain"></i></span>
-                <span><i class="devicon-express-original"></i></span>
+            <!-- Card 3: Plataforma de ações -->
+            <article
+              class="card-projeto-new"
+              aria-labelledby="projeto-plataforma-acoes"
+            >
+              <div class="card-header-new">
+                <div class="card-icon-box" aria-hidden="true">
+                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                </div>
+                <h3 id="projeto-plataforma-acoes">Plataforma de ações</h3>
               </div>
 
-              <div class="links-projeto">
-                <a
-                  href="https://controle-de-tarefas-zivz.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Ver projeto controle de tarefas (abre em nova aba)"
-                  >Ver projeto</a
-                >
-                <a
-                  href="https://github.com/vicenteprf/ControleDeTarefas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Ver código do controle de tarefas no GitHub (abre em nova aba)"
-                  >Código</a
-                >
-              </div>
-            </div>
-          </article>
-
-          <article class="card-projeto">
-            <img
-              src="assets/stockVault.png"
-              alt="Captura de tela do projeto To do List"
-            />
-
-            <div class="card-projeto-info">
-              <h3>Plataforma de ações</h3>
-
-              <p>
+              <p class="card-description-new">
                 Aplicação full stack para acompanhamento de ações da B3, com
                 autenticação via Google OAuth.
               </p>
 
-              <div class="tecnologias" aria-label="Tecnologias utilizadas">
-                <span><i class="devicon-tailwindcss-plain"></i></span>
-                <span><i class="devicon-react-plain"></i></span>
-                <span><i class="devicon-nodejs-plain"></i></span>
-                <span><i class="devicon-express-original"></i></span>
-              </div>
+              <ul class="tecnologias-new" aria-label="Tecnologias utilizadas">
+                <li class="tech-pill-new">React</li>
+                <li class="tech-pill-new">TypeScript</li>
+                <li class="tech-pill-new">Tailwind</li>
+                <li class="tech-pill-new">Express</li>
+                <li class="tech-pill-new">Recharts</li>
+              </ul>
 
-              <div class="links-projeto">
+              <div class="links-projeto-new">
                 <a
                   href="https://plataforma-de-analise-acoes-i3fq.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="btn-ver-projeto"
                   aria-label="Ver projeto plataforma de ações (abre em nova aba)"
-                  >Ver projeto</a
                 >
+                  Ver projeto
+                </a>
                 <a
                   href="https://github.com/vicenteprf/plataformaDeAnaliseAcoes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Ver código do plataforma de ações no GitHub (abre em nova aba)"
-                  >Código</a
+                  class="btn-codigo-projeto"
+                  aria-label="Ver código da plataforma de ações no GitHub (abre em nova aba)"
                 >
+                  Código
+                </a>
               </div>
-            </div>
-          </article>
+            </article>
+
+            <!-- Card 4: StockFlow -->
+            <article
+              class="card-projeto-new"
+              aria-labelledby="projeto-stockflow"
+            >
+              <div class="card-header-new">
+                <div class="card-icon-box" aria-hidden="true">
+                  <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+                </div>
+                <h3 id="projeto-stockflow">StockFlow</h3>
+              </div>
+
+              <p class="card-description-new">
+                Sistema de controle de estoque com dashboard de indicadores em
+                gráficos com Recharts.
+              </p>
+
+              <ul class="tecnologias-new" aria-label="Tecnologias utilizadas">
+                <li class="tech-pill-new">React</li>
+                <li class="tech-pill-new">TypeScript</li>
+                <li class="tech-pill-new">Tailwind</li>
+                <li class="tech-pill-new">Express</li>
+                <li class="tech-pill-new">Prisma</li>
+                <li class="tech-pill-new">PostgreSQL</li>
+              </ul>
+
+              <div class="links-projeto-new">
+                <a
+                  href="https://stock-flow-frontend-omega.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-ver-projeto"
+                  aria-label="Ver projeto StockFlow (abre em nova aba)"
+                >
+                  Ver projeto
+                </a>
+                <a
+                  href="https://github.com/vicenteprf/StockFlow_backend"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-codigo-projeto"
+                  aria-label="Ver código do StockFlow no GitHub (abre em nova aba)"
+                >
+                  Código
+                </a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
+
+      <!--
+        Espaço vazio para o efeito de empilhamento: o position: sticky só
+        segura projetos até o fim do <main>. Esse espaço estica o <main> até
+        o fim da página (o footer sobe por cima dele com margin-top negativo).
+      -->
+      <div class="espaco-empilhamento" aria-hidden="true"></div>
     </main>
 
-    <footer class="secao" aria-label="Rodapé com contatos">
-      <section
-        id="container-footer"
-        class="container-footer"
-        aria-labelledby="titulo-contato"
-      >
-        <h2 id="titulo-contato" class="sr-only">Contato</h2>
-        <address>
-          <a
-            href="mailto:vicenteprfilho09@gmail.com"
-            class="card-footer"
-            rel="noopener noreferrer"
-            aria-label="Enviar e-mail para vicenteprfilho09@gmail.com"
-          >
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-            <p>E-mail</p>
-            <p class="dados">vicenteprfilho09@gmail.com</p>
-          </a>
+    <footer class="secao" aria-labelledby="titulo-contato">
+      <div id="container-footer" class="container-footer" tabindex="-1">
+        <div class="footer-card-centered">
+          <!-- Título Principal -->
+          <h2 id="titulo-contato" class="footer-hero-title">
+            Pronto para o <span class="destaque-roxo">próximo desafio</span>
+          </h2>
 
-          <a
-            href="https://www.linkedin.com/in/vicente-ramos-dev/"
-            class="card-footer"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Perfil de Vicente Ramos no LinkedIn (abre em nova aba)"
-          >
-            <i class="devicon-linkedin-plain" aria-hidden="true"></i>
-            <p>LinkedIn</p>
-            <p class="dados">@vicente-ramos-dev</p>
-          </a>
+          <!-- Subtítulo -->
+          <p class="footer-subtitle">
+            Desenvolvedor Full Stack. Entre em contato.
+          </p>
 
-          <a
-            href="https://github.com/vicenteprf"
-            class="card-footer"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Perfil de Vicente Ramos no GitHub (abre em nova aba)"
-          >
-            <i class="devicon-github-original" aria-hidden="true"></i>
-            <p>GitHub</p>
-            <p class="dados">vicenteprf</p>
-          </a>
+          <!-- Botões de Contato -->
+          <address class="footer-buttons-container">
+            <a
+              href="mailto:vicenteprfilho09@gmail.com"
+              class="footer-btn btn-primary-email"
+              rel="noopener noreferrer"
+              aria-label="Enviar e-mail para vicenteprfilho09@gmail.com"
+            >
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span>vicenteprfilho09@gmail.com</span>
+            </a>
 
-          <a
-            href="https://wa.me/5585986353447"
-            class="card-footer"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Contato via WhatsApp (abre em nova aba)"
-          >
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            <p>WhatsApp</p>
-            <p class="dados">(85) 98635-3447</p>
-          </a>
-        </address>
-      </section>
+            <a
+              href="https://www.linkedin.com/in/vicente-ramos-dev/"
+              class="footer-btn btn-outline"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Perfil de Vicente Ramos no LinkedIn (abre em nova aba)"
+            >
+              <i class="devicon-linkedin-plain" aria-hidden="true"></i>
+              <span>LinkedIn</span>
+            </a>
+
+            <a
+              href="https://github.com/vicenteprf"
+              class="footer-btn btn-outline"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Perfil de Vicente Ramos no GitHub (abre em nova aba)"
+            >
+              <i class="devicon-github-original" aria-hidden="true"></i>
+              <span>GitHub</span>
+            </a>
+
+            <a
+              href="https://wa.me/5585986353447"
+              class="footer-btn btn-outline"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contato via WhatsApp (abre em nova aba)"
+            >
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span>WhatsApp</span>
+            </a>
+          </address>
+
+          <!-- Barra Inferior do Card -->
+          <div class="footer-centered-bottom">
+            <p><small>&copy; 2026 Vicente Ramos · vicenteprf.github.io</small></p>
+          </div>
+        </div>
+      </div>
     </footer>
     <script src="js/script.js"></script>
   </body>

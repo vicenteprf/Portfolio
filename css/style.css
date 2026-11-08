@@ -1,58 +1,154 @@
 /* ============================================================
-   TOKENS — variáveis globais de design
+   STYLE.CSS — estilos base (mobile-first)
+
+   Este arquivo tem a aparência do site no celular. As mudanças
+   para telas maiores ficam todas no responsive.css.
+
+   Ordem do arquivo:
+     1. Tokens (variáveis)
+     2. Base (reset, body, acessibilidade)
+     3. Componentes reutilizáveis (cards e botões)
+     4. Layout e seções (header, main, apresentação, sobre,
+        habilidades, projetos, footer)
+     5. Efeitos de rolagem (entrada e empilhamento)
+   ============================================================ */
+
+/* ============================================================
+   1. TOKENS
    ============================================================ */
 :root {
-  /* Cores */
+  /* ── Cores ── */
   --cor-fundo: #000633;
+  --cor-surface: #04092b; /* fundo de cards */
+  --cor-surface-deep: #020521; /* fundo dos cards "glass" */
   --cor-primaria: #8a2be2;
-  --cor-primaria-60: #8a2be299;
-  --cor-primaria-40: #8a2be266;
+  --cor-primaria-rgb: 138, 43, 226; /* para usar com rgba() */
+  --cor-primaria-60: rgba(var(--cor-primaria-rgb), 0.6);
+  --cor-primaria-40: rgba(var(--cor-primaria-rgb), 0.4);
+  --cor-primaria-hover: #a855f7;
+  --cor-violeta-rgb: 124, 58, 237; /* sombra dos botões com degradê */
+  --cor-accent: #c084fc; /* texto/ícone de destaque */
   --cor-texto: #ffffff;
   --cor-texto-suave: #8b8a8a;
-  --cor-nav-link: #cfcccc;
+  --cor-texto-muted: #94a3b8; /* descrições */
+  --cor-texto-nav: #cfcccc;
+  --cor-muted-dark: #64748b; /* copyright */
 
-  /* Tipografia */
+  /* ── Fundos ── */
+  --bg-card-glass:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(var(--cor-primaria-rgb), 0.15),
+      transparent 70%
+    ),
+    var(--cor-surface-deep);
+  --bg-hover-roxo: rgba(var(--cor-primaria-rgb), 0.15);
+  --gradient-btn: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  /* fundo das seções que sobem por cima de outra (borda de cima suave) */
+  --gradient-cobrir: linear-gradient(
+    to bottom,
+    transparent,
+    var(--cor-fundo) 6rem
+  );
+
+  /* ── Bordas ── */
+  --borda-card: 1px solid rgba(var(--cor-primaria-rgb), 0.35);
+
+  /* ── Tipografia fluida ──
+     clamp(mínimo, valor que cresce com a tela, máximo): o texto cresce
+     junto com a largura e chega no tamanho do desktop até 1100px */
   --fonte-base: "Montserrat", sans-serif;
-  --fs-hero: 2.5rem; /* parágrafo principal da apresentação  */
-  --fs-nome: 3.5rem; /* nome em destaque                     */
-  --fs-subtitulo: 2.5rem; /* subtítulo / h2 de seção              */
-  --fs-body: 1.8rem; /* parágrafos de conteúdo               */
-  --fs-card-titulo: 1.5rem;
-  --fs-card-body: 0.7rem;
-  --fs-icone-label: 0.8rem;
+  --fs-hero: clamp(1.5rem, 0.45rem + 3vw, 2.5rem); /* saudação */
+  --fs-subtitulo: clamp(1.5rem, 0.45rem + 3vw, 2.5rem); /* subtítulos */
+  --fs-body: clamp(1rem, 2.65vw, 1.8rem); /* texto do "Sobre mim" */
 
-  /* Espaçamentos recorrentes */
-  --radius-card: 0.8rem;
-  --radius-card-topo: var(--radius-card) var(--radius-card) 0.3rem 0.3rem;
+  /* ── Raios ── */
+  --radius-sm: 0.6rem;
+  --radius-md: 0.8rem;
+  --radius-lg: 1.2rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-pill: 999px;
 
-  /* Transições */
+  /* ── Transições ── */
   --transicao: 0.5s;
   --transicao-rapida: 0.2s;
+  --transicao-card:
+    transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 
-  /* Sombras de glow (reutilizadas em múltiplos componentes) */
+  /* ── Sombras ── */
   --glow-suave: 0 0 0.5rem var(--cor-primaria), 0 0 3rem var(--cor-primaria-40);
-
-  --glow-intenso:
-    0 0 0.5rem var(--cor-primaria), 0 0 1.8rem var(--cor-primaria-60),
-    0 0 3rem var(--cor-primaria-40);
-
-  --glow-sobre:
-    0 0 1rem var(--cor-primaria-60), 0 0 2rem var(--cor-primaria-40);
-
   --glow-borda:
     0 0 20px var(--cor-primaria), 0 0 50px var(--cor-primaria-60),
     0 0 90px var(--cor-primaria-40);
+  --glow-card-hover: 0 10px 25px rgba(var(--cor-primaria-rgb), 0.25);
+  --shadow-card:
+    0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(var(--cor-primaria-rgb), 0.15);
 
-  --glow-card:
-    0 0 0.1rem var(--cor-primaria), 0 0 0.4rem var(--cor-primaria-60),
-    0 0 0.6rem var(--cor-primaria-40);
+  /* ── Layout (valores do celular; aumentam no responsive.css) ── */
+  --max-content: 72rem;
+  --gap-secoes: 3rem; /* espaço entre as seções do <main> */
+  --padding-secao: 3rem 0; /* habilidades e projetos */
+  --padding-bloco: 1.5rem 0; /* caixa interna de habilidades e projetos */
+  --espaco-empilhar: 40vh; /* tempo que uma seção fica parada (ver efeitos) */
 }
 
 /* ============================================================
-   RESET & BASE
+   2. BASE
    ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Visualmente oculto mas acessível para leitores de tela */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fonte-base);
+  background: var(--cor-fundo);
+}
+
+/* ── Acessibilidade ── */
+
+/* Link "pular para o conteúdo": fica fora da tela e só aparece no foco (Tab) */
+.pular-conteudo {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--cor-primaria);
+  color: var(--cor-texto);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.pular-conteudo:focus {
+  transform: translateY(0);
+}
+
+/* Contorno ao navegar pelo teclado (:focus-visible não aparece no clique) */
+a:focus-visible,
+button:focus-visible {
+  outline: 0.2rem solid var(--cor-accent);
+  outline-offset: 0.2rem;
+}
+
+/* Seções que recebem foco pelo JS (tabindex="-1") não precisam de contorno */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Esconde da tela, mas mantém para leitores de tela */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -65,178 +161,229 @@
   border: 0;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* outline: 1px solid red; */
+/* ============================================================
+   3. COMPONENTES REUTILIZÁVEIS
+   ============================================================ */
+
+/* ── Card simples (habilidades e projetos) ── */
+.skill-card-new,
+.card-projeto-new {
+  background: var(--cor-surface);
+  border: var(--borda-card);
+  border-radius: var(--radius-lg);
+  transition: var(--transicao-card);
 }
 
-html {
-  scroll-behavior: smooth;
+/* Efeitos de hover só em quem tem mouse: no celular o "hover" fica
+   preso depois do toque. (hover: hover) = aparelho com mouse/trackpad */
+@media (hover: hover) {
+  .skill-card-new:hover,
+  .card-projeto-new:hover {
+    transform: translateY(-5px);
+  }
 }
 
-body {
-  font-family: var(--fonte-base);
-  background: var(--cor-fundo);
-  display: flex;
-  flex-direction: column;
+/* ── Card "glass" com brilho roxo (sobre mim e contato) ── */
+.section-sobre-mim,
+.footer-card-centered {
+  background: var(--bg-card-glass);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Botões ──
+   Primário: degradê roxo (Ver projeto, e-mail)
+   Contorno: fundo quase transparente com borda (Código, redes sociais) */
+.btn-ver-projeto,
+.btn-primary-email {
+  background: var(--gradient-btn);
+  color: var(--cor-texto);
+}
+
+.btn-codigo-projeto,
+.btn-outline {
+  color: var(--cor-texto);
+}
+
+.btn-codigo-projeto:hover,
+.btn-outline:hover {
+  background: var(--bg-hover-roxo);
+  border-color: var(--cor-primaria-hover);
 }
 
 /* ============================================================
-   ANIMAÇÃO DE ENTRADA (IntersectionObserver)
+   4. LAYOUT E SEÇÕES
    ============================================================ */
-.secao {
-  opacity: 0;
-  filter: blur(1rem);
-  transform: translateY(50px);
-  transition: all 1s;
-}
 
-.show {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-  transition: all var(--transicao);
-}
-
-/* ============================================================
-   HEADER & NAVEGAÇÃO
-   ============================================================ */
-header {
+/* ── Header e navegação ── */
+.site-header {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
   background: linear-gradient(
     to bottom,
     var(--cor-primaria) -10%,
     var(--cor-fundo)
   );
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   text-transform: uppercase;
-  padding: 0 4rem;
 }
 
-header img {
-  width: 5rem;
+.site-header img {
+  width: 4.2rem;
   height: auto;
 }
 
-header ul {
-  display: flex;
-  gap: 2rem;
-  margin: 2rem;
-  list-style: none;
+.site-header a {
+  color: var(--cor-texto-nav);
+  text-decoration: none;
+  transition: color var(--transicao);
 }
 
-header a {
-  text-decoration: none;
-  color: var(--cor-nav-link);
+.site-header a:hover {
+  color: var(--cor-texto);
+  font-weight: 600;
+}
+
+/* Botão hambúrguer (some a partir de 600px).
+   position: relative para o z-index funcionar e o X ficar acima do menu */
+.btn-menu {
+  position: relative;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  /* área de toque de 44px (recomendado para dedos) */
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  background: transparent;
+  color: var(--cor-texto);
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
-header a:hover {
-  color: var(--cor-texto);
-  font-weight: 600;
-  transition: var(--transicao);
+/* Menu no celular: tela cheia por cima do site */
+.nav-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 6, 51, 0.92);
+  backdrop-filter: blur(8px);
 }
 
-/* Botão hamburguer — oculto por padrão, visível em mobile via responsive.css */
-.btn-menu {
-  display: none;
+.nav-menu.active {
+  display: flex;
 }
 
 .nav-menu ul {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: min(80%, 22rem);
+  list-style: none;
 }
 
-/* ============================================================
-   MAIN — container geral
-   ============================================================ */
+.nav-menu a {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* ── Main ── */
 main {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 90%;
+  gap: var(--gap-secoes);
+  max-width: 92%;
   margin: auto;
+  /* Corta o que passar das laterais (ex.: "Sobre mim" entrando da direita)
+     sem criar rolagem horizontal. clip não atrapalha o position: sticky. */
+  overflow-x: clip;
 }
 
-/* ============================================================
-   SEÇÃO APRESENTAÇÃO
-   ============================================================ */
+/* Parágrafos do main: a saudação usa o tamanho grande; os outros
+   parágrafos definem o próprio tamanho na seção deles */
+main p {
+  color: var(--cor-texto);
+  font-size: var(--fs-hero);
+  font-weight: 500;
+}
+
+/* ── Apresentação ── */
 .container-apresentacao {
-  padding-top: 8rem;
-  padding-bottom: 6rem;
-  min-height: calc(100vh - 5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  padding: 3rem 1.25rem;
 }
 
 .apresentacao {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: space-between;
-  gap: 10rem;
-  width: 90%;
+  gap: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* "Olá, eu sou o…" */
-main p {
-  font-size: var(--fs-hero);
-  font-weight: 500;
-  color: var(--cor-texto);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+.section-apresentacao {
+  max-width: 22rem;
+  margin: 0 auto;
 }
 
-/* Nome em destaque */
 .section-apresentacao p {
-  display: block;
   line-height: 1.1;
 }
 
-.section-apresentacao span,
 .nome-destaque {
-  display: block;
   color: var(--cor-primaria);
+  font-size: clamp(2.9rem, 14vw, 4rem);
   font-weight: 600;
-  font-size: clamp(4.2rem, 5.6vw, 5.4rem);
   line-height: 1;
-  white-space: nowrap;
 }
 
-/* "Desenvolvedor Full Stack" */
-h2.container-subtitulo {
+.container-subtitulo {
   color: var(--cor-texto-suave);
   font-size: var(--fs-subtitulo);
   font-weight: 400;
-  text-align: left;
 }
 
 .texto-apresentacao {
-  display: block;
-  max-width: 35rem;
-  margin-top: 2rem;
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: var(--cor-texto);
+  max-width: 28rem;
+  margin: 1.4rem auto 0;
+  font-size: 0.95rem;
 }
 
 .acoes-apresentacao {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  margin-top: 2.4rem;
+  margin-top: 1.8rem;
 }
 
 .acoes-apresentacao a {
+  /* ícone e texto lado a lado, centralizados */
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
   min-width: 9rem;
   padding: 0.9rem 1.4rem;
   border: 0.1rem solid var(--cor-primaria);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   color: var(--cor-texto);
   font-size: 1rem;
   font-weight: 700;
@@ -245,23 +392,20 @@ h2.container-subtitulo {
   transition: var(--transicao-rapida);
 }
 
-.acoes-apresentacao a:first-child {
-  background: linear-gradient(var(--cor-primaria), var(--cor-fundo));
-  box-shadow: 0 0 1.2rem var(--cor-primaria-40);
-}
-
 .acoes-apresentacao a:hover {
   transform: translateY(-0.15rem);
   box-shadow: var(--glow-suave);
 }
 
-/* Foto de perfil */
+/* Foto de perfil: moldura redonda (.borda) + fundo (::before) + foto */
 .container-img {
+  --moldura: 0.65rem; /* espessura da borda roxa */
+  --recuo-fundo: 1rem; /* distância do fundo escuro até a borda */
   position: relative;
-  width: 40rem;
-  aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
+  width: min(15rem, 70vw);
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   isolation: isolate;
 }
@@ -269,13 +413,13 @@ h2.container-subtitulo {
 .container-img::before {
   content: "";
   position: absolute;
-  inset: 2rem;
+  inset: var(--recuo-fundo);
   z-index: 1;
   border-radius: 50%;
   background:
     radial-gradient(
       circle at 50% 20%,
-      rgba(138, 43, 226, 0.18),
+      rgba(var(--cor-primaria-rgb), 0.18),
       transparent 42%
     ),
     linear-gradient(145deg, #020834 0%, #00031f 58%, #070b3d 100%);
@@ -285,38 +429,34 @@ h2.container-subtitulo {
 .borda {
   position: absolute;
   inset: 0;
-  border: 1rem solid var(--cor-primaria);
+  z-index: 3;
+  border: var(--moldura) solid var(--cor-primaria);
   border-radius: 50%;
   mask: radial-gradient(circle at left, black 90%);
   box-shadow: var(--glow-borda);
-  z-index: 3;
 }
 
 .container-img img {
-  width: 100%;
   z-index: 4;
+  width: 100%;
+  height: auto; /* o HTML tem width/height só para reservar o espaço */
   mask-image: radial-gradient(circle at top, black 50%, transparent 80%);
-  /* efeito 3D: imagem "saindo" da forma */
   transform: translate(-10px, -30px);
 }
 
-/* ============================================================
-   SEÇÃO SOBRE MIM
-   ============================================================ */
+/* ── Sobre mim ── */
 .section-sobre-mim {
-  scroll-margin-top: 8rem;
-  text-align: center;
-  width: min(100%, 72rem);
-  padding: 2.5rem;
-  margin: 2rem auto 6rem;
-  border-radius: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  background: rgba(5, 11, 63, 0.55);
+  width: min(100%, var(--max-content));
+  margin: 1rem auto 3rem;
+  padding: 1.5rem;
   border: 0.1rem solid var(--cor-primaria-40);
-  box-shadow: var(--glow-sobre);
+  border-radius: var(--radius-2xl);
+  text-align: center;
+  scroll-margin-top: 8rem;
 }
 
 .section-sobre-mim h2 {
@@ -326,260 +466,491 @@ h2.container-subtitulo {
 }
 
 .section-sobre-mim p {
-  display: block;
   max-width: 62rem;
-  line-height: 1.7;
-  text-align: center;
-  font-size: var(--fs-body);
   color: var(--cor-texto-suave);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  text-wrap: pretty;
 }
 
-/* ============================================================
-   SEÇÃO HABILIDADES
-   ============================================================ */
-#habilidades {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-habilidades {
-  height: 20rem;
-  color: var(--cor-texto);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  margin: 10rem 0;
-}
-
-.container-habilidades h2 {
-  font-size: var(--fs-subtitulo);
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.container-icones {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  flex-wrap: wrap;
-}
-
-.icones {
-  width: 5.8rem;
-  height: 6.8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  color: var(--cor-texto);
-  font-size: 3rem;
-  border-radius: var(--radius-card-topo);
-  box-shadow: var(--glow-suave);
-  cursor: pointer;
-}
-
-/* font-size já herdado de .icones — regra redundante removida */
-.icones span {
-  font-size: var(--fs-icone-label);
-  text-align: center;
-}
-
-.icones:hover {
-  transform: scale(1.1);
-  box-shadow: var(--glow-intenso);
-  transition: var(--transicao);
-}
-
-.icones:hover span {
-  font-weight: 600;
-}
-
-/* ============================================================
-   SEÇÃO PROJETOS
-   ============================================================ */
+/* ── Habilidades e projetos: estrutura compartilhada ── */
+#habilidades,
 #container-projetos {
-  min-height: 100vh;
-  padding: 4rem 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: var(--padding-secao);
+}
+
+.skills-outer-card,
+.projects-outer-card {
+  display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: var(--max-content);
+  padding: var(--padding-bloco);
 }
 
 .titulo-secao {
   color: var(--cor-texto);
-  font-size: var(--fs-subtitulo);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-align: center;
   text-transform: uppercase;
 }
 
+/* ── Habilidades ── */
+.skills-grupos {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.skills-grupo-titulo {
+  margin-bottom: 1.25rem;
+  color: var(--cor-texto);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/*
+  Flex com wrap + justify-content: center deixa grupos com poucos
+  itens centralizados, sem buracos de grid.
+  --cols define quantos cards cabem por linha (muda nos breakpoints).
+*/
+.container-icones-new {
+  --cols: 3;
+  --gap: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
+  width: 100%;
+  list-style: none;
+}
+
+.skill-card-new {
+  /* largura = (100% - espaços entre cards) / quantidade por linha */
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 0;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.skill-card-new i,
+.skill-card-new > span {
+  color: var(--cor-texto);
+  transition: color 0.3s ease;
+}
+
+.skill-card-new i {
+  font-size: 2.2rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.skill-card-new > span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Hover com a cor da marca: cada tecnologia só define --skill-color e
+   --skill-rgb (logo abaixo); a regra de hover é uma só para todas */
+@media (hover: hover) {
+  .skill-card-new:hover {
+    border-color: var(--skill-color);
+    box-shadow: 0 0 20px rgba(var(--skill-rgb), 0.35);
+  }
+
+  .skill-card-new:hover i,
+  .skill-card-new:hover > span {
+    color: var(--skill-color);
+  }
+}
+
+/* Cores das marcas */
+.html5      { --skill-color: #e34f26; --skill-rgb: 227, 79, 38; }
+.css3       { --skill-color: #1572b6; --skill-rgb: 21, 114, 182; }
+.tailwind   { --skill-color: #06b6d4; --skill-rgb: 6, 182, 212; }
+.javascript { --skill-color: #f7df1e; --skill-rgb: 247, 223, 30; }
+.typescript { --skill-color: #3178c6; --skill-rgb: 49, 120, 198; }
+.react      { --skill-color: #61dafb; --skill-rgb: 97, 218, 251; }
+.nodejs     { --skill-color: #339933; --skill-rgb: 51, 153, 51; }
+.express    { --skill-color: #ffffff; --skill-rgb: 255, 255, 255; }
+.prisma     { --skill-color: #5a67d8; --skill-rgb: 90, 103, 216; }
+.nestjs     { --skill-color: #e0234e; --skill-rgb: 224, 35, 78; }
+.postgresql { --skill-color: #4169e1; --skill-rgb: 51, 103, 145; }
+.git        { --skill-color: #f05032; --skill-rgb: 240, 80, 50; }
+.docker     { --skill-color: #2496ed; --skill-rgb: 36, 150, 237; }
+.jest       { --skill-color: #c21325; --skill-rgb: 194, 19, 37; }
+.supertest  { --skill-color: #22c55e; --skill-rgb: 34, 197, 94; }
+
+/* ── Projetos ── */
 .container-projeto {
   display: grid;
-  grid-template-columns: repeat(4, 17.5rem);
-  align-items: center;
-  justify-content: center;
-  gap: 1.6rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
   width: 100%;
 }
 
-.card-projeto {
-  width: 17.5rem;
-  height: 100%;
-  min-height: 22rem;
-  border: 0.1rem solid var(--cor-primaria-60);
-  background: rgba(5, 11, 63, 0.72);
-  box-shadow: 0 0 0.8rem rgba(138, 43, 226, 0.16);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  max-width: none;
-}
-
-.card-projeto:hover {
-  transform: scale(1.1);
-  border-bottom-width: 0.4rem;
-  transition: var(--transicao-rapida);
-}
-
-.card-projeto img {
-  height: 7.5rem;
-  width: 100%;
-  object-fit: cover;
-  /* herda border-radius do overflow:hidden do pai */
-}
-
-.card-projeto-info {
+.card-projeto-new {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.5rem 1.25rem;
+}
+
+@media (hover: hover) {
+  .card-projeto-new:hover {
+    border-color: var(--cor-primaria-hover);
+    box-shadow: var(--glow-card-hover);
+  }
+}
+
+.card-header-new {
+  display: flex;
+  align-items: center;
   gap: 1rem;
-  height: calc(100% - 7.5rem);
-  padding: 1.2rem;
 }
 
-.card-projeto h3 {
-  font-size: 1.2rem;
-  text-align: left;
-  color: var(--cor-texto);
-}
-
-.card-projeto p {
-  display: -webkit-box;
-  height: auto;
-  padding: 0;
-  font-size: 0.85rem;
-  line-height: 1.45;
-  text-align: left;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  line-clamp: 4;
-  overflow: hidden;
-}
-
-.tecnologias {
+.card-icon-box {
   display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: auto;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 1px solid var(--cor-primaria-40);
+  border-radius: var(--radius-md);
+  background: rgba(var(--cor-primaria-rgb), 0.18);
+  color: var(--cor-accent);
+  font-size: 1.25rem;
 }
 
-.tecnologias span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  min-height: 1.6rem;
-  padding: 0.2rem 0.55rem;
-  border: 0.1rem solid var(--cor-primaria-60);
-  border-radius: 999px;
+.card-header-new h3 {
   color: var(--cor-texto);
-  font-size: 0.72rem;
-}
-
-.tecnologias i {
-  font-size: 0.9rem;
-  width: auto;
-  height: auto;
-  color: var(--cor-primaria);
-  cursor: pointer;
-}
-
-.links-projeto {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-bottom: 0;
-  gap: 0.6rem;
-}
-
-.links-projeto a {
-  font-size: 0.75rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  padding: 0.5rem 0.9rem;
-  text-decoration: none;
-  color: var(--cor-texto);
-  background: linear-gradient(var(--cor-primaria), var(--cor-fundo));
-  border-radius: 0.5rem;
+  line-height: 1.25;
 }
 
-.links-projeto a:hover {
-  background: transparent;
-  border: 0.1rem solid var(--cor-primaria);
-  color: var(--cor-primaria);
-  transition: scale(1.1);
+/* Descrição com no máximo 4 linhas (o resto vira "...") */
+.card-description-new {
+  display: -webkit-box;
+  flex-grow: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  color: var(--cor-texto-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-  background: linear-gradient(
-    to top,
-    var(--cor-primaria) -70%,
-    var(--cor-fundo) 45%
-  );
-}
-
-address {
+.tecnologias-new {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 5rem;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+  list-style: none;
 }
 
-.container-footer a {
-  text-decoration: none;
-}
-
-.card-footer {
-  color: var(--cor-texto);
-  font-size: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  width: 8rem;
-  margin: 7rem 0 5rem;
-  cursor: pointer;
-}
-
-.card-footer i {
-  font-size: 2rem;
-  color: var(--cor-texto);
-}
-
-.dados {
-  color: var(--cor-texto);
+.tech-pill-new {
+  padding: 0.3rem 0.75rem;
+  border: var(--borda-card);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.03);
+  color: #cbd5e1;
+  font-size: 0.72rem;
   font-weight: 600;
 }
 
-.card-footer:hover {
-  transform: scale(1.2);
-  transition: var(--transicao-rapida);
+.links-projeto-new {
+  display: flex;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-ver-projeto,
+.btn-codigo-projeto {
+  flex: 1;
+  padding: 0.65rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transicao-rapida) ease;
+}
+
+.btn-ver-projeto:hover,
+.btn-codigo-projeto:hover {
+  transform: translateY(-1px);
+}
+
+.btn-ver-projeto {
+  box-shadow: 0 4px 12px rgba(var(--cor-violeta-rgb), 0.3);
+}
+
+.btn-ver-projeto:hover {
+  opacity: 0.9;
+}
+
+.btn-codigo-projeto {
+  border: 1px solid var(--cor-primaria-40);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Footer (contato) ── */
+footer {
+  /* fica por cima de projetos, mas SEM fundo: assim projetos encolhe e
+     some no lugar enquanto o card de contato sobe */
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  /* ocupa a tela inteira e sobe por cima do .espaco-empilhamento */
+  min-height: 100vh;
+  min-height: 100svh;
+  margin-top: -100vh;
+  margin-top: -100svh;
+  padding: 4rem 1rem 3rem;
+}
+
+.container-footer {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+}
+
+.footer-card-centered {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 3.5rem 1.5rem 2rem;
+  border: 1px solid rgba(var(--cor-primaria-rgb), 0.3);
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+
+.footer-hero-title {
+  max-width: 45rem;
+  margin-bottom: 1.2rem;
+  color: var(--cor-texto);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Texto com degradê roxo */
+.destaque-roxo {
+  background: linear-gradient(135deg, #c084fc 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-subtitle {
+  max-width: 32rem;
+  margin-bottom: 2.8rem;
+  color: var(--cor-texto-muted);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+}
+
+.footer-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  margin-bottom: 3.5rem;
+  font-style: normal; /* <address> vem em itálico por padrão */
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 22rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer-btn:hover {
+  transform: translateY(-2px);
+}
+
+.footer-btn i {
+  font-size: 1.1rem;
+}
+
+.btn-primary-email {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(var(--cor-violeta-rgb), 0.4);
+}
+
+.btn-primary-email:hover {
+  box-shadow: 0 6px 20px rgba(var(--cor-violeta-rgb), 0.6);
+}
+
+.btn-outline {
+  border: var(--borda-card);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.footer-centered-bottom {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--cor-muted-dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   5. EFEITOS DE ROLAGEM
+   ============================================================ */
+
+/* ── Entrada (classe .show colocada pelo IntersectionObserver) ──
+   A animação fica no FILHO da seção (.secao > *), não na própria .secao.
+   Se a seção observada se movesse, a parte visível mudaria a cada troca
+   de classe e ela ficaria piscando na borda da tela.
+   Cada seção só troca a direção (--entrada-x / --entrada-y) e a duração. */
+.secao > *,
+#sobre {
+  --entrada-x: 0px;
+  --entrada-y: 50px;
+  opacity: 0;
+  filter: blur(1rem);
+  transform: translate(var(--entrada-x), var(--entrada-y));
+  transition:
+    opacity 1s,
+    filter 1s,
+    transform 1s;
+}
+
+.secao.show > *,
+#sobre.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(0, 0);
+  transition:
+    opacity var(--transicao),
+    filter var(--transicao),
+    transform var(--transicao);
+}
+
+/* Habilidades: entra da esquerda, mais devagar */
+#habilidades > * {
+  --entrada-x: -100px;
+  --entrada-y: 0px;
+}
+
+#habilidades.show > * {
+  transition:
+    opacity 1.2s,
+    filter 1.2s,
+    transform 1.2s ease-out;
+}
+
+/* Projetos: entra da direita */
+#container-projetos > * {
+  --entrada-x: 100px;
+  --entrada-y: 0px;
+}
+
+/* Sobre mim: entra da direita. Aqui o movimento fica na própria seção
+   porque ela é o card; como é só horizontal, não causa o pisca-pisca */
+#sobre {
+  --entrada-x: 150px;
+  --entrada-y: 0px;
+}
+
+#sobre.show {
+  transition:
+    opacity 1s,
+    filter 1s,
+    transform 1s ease-out;
+}
+
+/* ── Empilhamento (seções com a classe .empilhar) ──
+   A seção trava no lugar (sticky) e, conforme a pessoa rola, vai encolhendo
+   e sumindo enquanto a próxima sobe por cima. As variáveis vêm do script.js:
+     --topo-fixo: onde a seção trava
+     --origem-y:  ponto de onde ela encolhe (centro da parte visível)
+     --progresso: 0 (próxima seção ainda embaixo) até 1 (seção sumiu)
+   Cada seção seguinte vem depois no HTML, então fica por cima da anterior. */
+.empilhar {
+  position: sticky;
+  top: var(--topo-fixo, 0px);
+  z-index: 0;
+  transform-origin: 50% var(--origem-y, 50%);
+  transform: scale(calc(1 - 0.15 * var(--progresso, 0)));
+  opacity: calc(1 - var(--progresso, 0));
+  filter: blur(calc(6px * var(--progresso, 0)));
+}
+
+/* Sobre mim: o empilhamento fica no div que envolve a seção, porque a
+   seção já usa transform/opacity na entrada (com transition) */
+.empilhar-sobre {
+  display: flow-root; /* mantém as margens da seção dentro do div */
+}
+
+/* Espaço antes da habilidades e de projetos: enquanto a pessoa rola por
+   ele, a seção anterior fica parada e nítida (ver "segurar" no JS) */
+#habilidades,
+#container-projetos {
+  margin-top: var(--espaco-empilhar);
+}
+
+/* Fundo em projetos, que sobe por cima da habilidades e vai cobrindo ela.
+   Habilidades fica sem fundo: o "Sobre mim" some sozinho, no lugar. */
+#container-projetos {
+  background: var(--gradient-cobrir);
+}
+
+#container-projetos {
+  /* ocupa pelo menos a tela inteira: quando projetos chega no topo,
+     o footer ainda está fora da tela (svh = altura sem a barra do navegador) */
+  min-height: 100vh;
+  min-height: 100svh;
+  /* o conteúdo entrando da direita não gera rolagem horizontal */
+  overflow-x: clip;
+}
+
+/* Espaço no fim do <main> para projetos continuar travada (sticky):
+   100svh = área que o footer ocupa por cima (margin-top negativo)
+   + o tempo parado antes do footer aparecer */
+.espaco-empilhamento {
+  height: calc(var(--espaco-empilhar) + 100vh);
+  height: calc(var(--espaco-empilhar) + 100svh);
 }

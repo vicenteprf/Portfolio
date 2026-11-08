@@ -1,499 +1,265 @@
 /* ============================================================
-   RESPONSIVE
-   Breakpoints (decrescente):
-     1900 → 1600 → 1300 → 1100 → 700 → 600 → 400
-   
-   Variáveis redefinidas por breakpoint para evitar repetir
-   os mesmos seletores em cada media query.
+   RESPONSIVE.CSS — ajustes para telas maiores (mobile-first)
+
+   O style.css já tem a versão do celular. Aqui ficam só as
+   mudanças, sempre com min-width (do menor para o maior):
+     480px  — celular largo: botão da apresentação menor
+     600px  — tablet pequeno: menu horizontal, mais espaço nas seções,
+              apresentação mais larga, habilidades com 4 por linha
+     640px  — projetos em 2 colunas
+     768px  — tablet: mais espaço entre seções, habilidades com 6 por
+              linha (ainda compactas), contato em grade
+     960px  — apresentação com mais espaço nas laterais; cards de
+              habilidade no tamanho cheio, 4 por linha
+     1080px — habilidades com 6 por linha; projetos em 4 colunas
+     1100px — desktop: apresentação com texto e foto lado a lado
+
+   Tamanhos de texto não aparecem aqui: eles são fluidos (clamp)
+   e ficam nas variáveis do style.css.
    ============================================================ */
 
-/* ── 1900px ─────────────────────────────────────────────── */
-@media (max-width: 1900px) {
-  :root {
-    --fs-hero: 1.9rem;
-    --fs-nome: 2.8rem;
-    --fs-subtitulo: 1.7rem;
-  }
-
-  .container-img {
-    width: 35rem;
-  }
-  .container-projeto {
-    flex-wrap: wrap;
-  }
-  .card-projeto {
-    height: auto;
-    width: 17.5rem;
-  }
-}
-
-/* ── 1600px ─────────────────────────────────────────────── */
-@media (max-width: 1600px) {
-  :root {
-    --fs-hero: 1.6rem;
-    --fs-nome: 2.3rem;
-    --fs-subtitulo: 1.4rem;
-  }
-
-  .container-img {
-    width: 26rem;
-  }
-}
-
-/* ── 1300px ─────────────────────────────────────────────── */
-@media (max-width: 1300px) {
-  :root {
-    --fs-hero: 1.3rem;
-  }
-
-  header a {
-    font-size: 0.9rem;
-  }
-  .apresentacao {
-    gap: 5rem;
-  }
-  .container-img {
-    width: 22rem;
-  }
-
-  .section-sobre-mim span {
-    font-size: 1.5rem;
-  }
-  .section-sobre-mim p {
-    font-size: 1rem;
-  }
-
-  .container-projeto {
-    display: grid;
-    grid-template-columns: repeat(3, 17.5rem);
-  }
-}
-
-/* ── 1100px — quebra para coluna ─────────────────────────── */
-@media (max-width: 1100px) {
-  :root {
-    --fs-hero: 2rem;
-    --fs-nome: 3rem;
-    --fs-subtitulo: 1.6rem;
-    --fs-body: 1.25rem;
-  }
-
-  header {
-    padding: 0 2.5rem;
-  }
-
-  main {
-    max-width: min(92%, 980px);
-  }
-
-  .container-apresentacao {
-    padding-top: 5rem;
-    padding-bottom: 4rem;
-    min-height: auto;
-  }
-
-  .apresentacao {
-    margin-top: 2.5rem;
-    flex-direction: column-reverse;
-    gap: 3rem;
-    width: 100%;
-    text-align: center;
-  }
-
-  .container-img {
-    width: min(25rem, 70vw);
-  }
-
-  main p {
-    justify-content: center;
-    flex-wrap: wrap;
-    line-height: 1.25;
-  }
-
-  h2.container-subtitulo {
-    text-align: center;
-  }
-
-  .texto-apresentacao {
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-  }
-
-  .section-apresentacao span,
-  .nome-destaque {
-    font-size: clamp(3.4rem, 10vw, 4.4rem);
-  }
-
-  .acoes-apresentacao {
-    justify-content: center;
-  }
-
-  .section-sobre-mim {
-    margin: 1rem auto 4rem;
-    padding: 1.5rem;
-  }
-
-  #habilidades {
-    min-height: auto;
-    padding: 6rem 0;
-  }
-
-  .container-habilidades {
-    height: auto;
-    margin: 0;
-  }
-
-  .container-icones {
-    gap: 2.5rem;
-  }
-
-  #container-projetos {
-    min-height: auto;
-    padding: 5rem 0;
-  }
-
-  .container-projeto {
-    display: grid;
-    grid-template-columns: repeat(2, 17.5rem);
-    width: 100%;
-    align-items: stretch;
-  }
-
-  .card-projeto {
-    max-width: none;
-  }
-
-  .card-projeto:hover {
-    transform: translateY(-0.35rem);
-  }
-
-  address {
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .dados {
-    display: none;
-  }
-}
-
-/* ── 700px ──────────────────────────────────────────────── */
-@media (max-width: 700px) {
-  :root {
-    --fs-hero: 1.5rem;
-    --fs-nome: 2.2rem;
-    --fs-body: 1rem;
-  }
-
-  header {
-    padding: 0 1.5rem;
-  }
-
-  main {
-    max-width: 92%;
-  }
-
-  .apresentacao {
-    margin-top: 2.5rem;
-    flex-direction: column-reverse;
-    gap: 2rem;
-  }
-
-  .container-img {
-    width: min(22rem, 76vw);
-  }
-
-  .container-projeto {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .card-projeto {
-    max-width: 32rem;
-    width: min(100%, 32rem);
-    justify-self: center;
-  }
-
-  address {
-    gap: 1rem;
-  }
-}
-
-/* ── 600px — mobile ─────────────────────────────────────── */
-@media (max-width: 600px) {
-  :root {
-    --fs-hero: 1.2rem;
-    --fs-nome: 1.5rem;
-    --fs-subtitulo: 1.15rem;
-    --fs-body: 0.95rem;
-  }
-
-  /* Menu hamburguer */
-  .nav-menu {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 6, 51, 0.92);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  .nav-menu ul {
-    width: min(80%, 22rem);
-    font-size: 1rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-  }
-
-  .nav-menu a {
-    display: block;
-    width: 100%;
-    padding: 0.8rem 1rem;
-    text-align: center;
-    font-size: 1rem;
-  }
-
-  .btn-menu {
-    display: block;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    color: var(--cor-texto);
-    font-size: 1.5rem;
-    z-index: 200;
-  }
-
-  /* Header */
-  .container-apresentacao {
-    padding-top: 3rem;
-  }
-
-  /* Apresentação */
-  .apresentacao {
-    flex-direction: column-reverse;
-    align-items: center;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  .texto-apresentacao {
-    max-width: 28rem;
-    margin-top: 1.4rem;
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .section-apresentacao span,
-  .nome-destaque {
-    font-size: clamp(2.9rem, 14vw, 4rem);
-    white-space: normal;
-  }
-
-  .acoes-apresentacao {
-    flex-wrap: wrap;
-    margin-top: 1.8rem;
-  }
-
+/* ── 480px — celular largo ───────────────────────────────── */
+@media (min-width: 480px) {
   .acoes-apresentacao a {
     min-width: 8.5rem;
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
   }
+}
+
+/* ── 600px — tablet pequeno ───────────────────────────────── */
+@media (min-width: 600px) {
+  :root {
+    --padding-secao: 4rem 1rem;
+    --padding-bloco: 3rem 1.5rem;
+  }
+
+  .site-header {
+    min-height: 3.9rem;
+    padding: 0 2.5rem;
+  }
+
+  /* esconde o hambúrguer e desfaz o menu em tela cheia do celular */
+  .btn-menu {
+    display: none;
+  }
+
+  .nav-menu {
+    position: static;
+    inset: auto;
+    display: block;
+    background-color: transparent;
+    backdrop-filter: none;
+  }
+
+  .nav-menu ul {
+    flex-direction: row;
+    gap: 1.9rem;
+  }
+
+  .nav-menu a {
+    width: auto;
+    /* no tablet: texto um pouco maior e área de toque mais alta */
+    padding: 0.75rem 0;
+    font-size: 0.8rem;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  /* habilidades: cards compactos, 4 por linha */
+  .container-icones-new {
+    --cols: 4;
+    --gap: 1.25rem;
+  }
+
+  /* apresentação: texto mais largo (subtítulo em uma linha) e foto maior */
+  .section-apresentacao {
+    max-width: 34rem;
+  }
 
   .container-img {
-    width: min(15rem, 70vw);
-  }
-
-  .container-img::before {
-    inset: 1rem;
-  }
-
-  .borda {
-    border-width: 0.65rem;
-  }
-
-  /* Sobre mim */
-  .section-sobre-mim {
-    padding: 1.5rem;
-    margin: 1rem auto 3rem;
-  }
-  .section-sobre-mim p {
-    line-height: 1.7;
-  }
-
-  /* Habilidades */
-  #habilidades {
-    padding: 4rem 0;
-  }
-
-  .container-icones {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(4.5rem, 1fr));
-    width: 100%;
-    gap: 1rem;
-  }
-
-  .icones {
-    width: 100%;
-    height: 5.5rem;
-  }
-  .icones span {
-    font-size: 0.65rem;
-  }
-
-  /* Projetos — layout horizontal em mobile */
-  .titulo-secao {
-    color: var(--cor-texto);
-  }
-
-  .container-projeto {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-  }
-
-  .card-projeto {
-    display: flex;
-    flex-direction: row;
-    min-height: 9.5rem;
-    height: auto;
-    width: 100%;
-    max-width: 100%;
-    max-height: none;
-  }
-
-  .card-projeto img {
-    width: 7.5rem;
-    min-width: 7.5rem;
-    height: 100%;
-    border-radius: 0;
-    border-top-left-radius: var(--radius-card);
-    border-bottom-left-radius: var(--radius-card);
-  }
-
-  .card-projeto-info {
-    flex: 1;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.6rem 0.8rem;
-    height: auto;
-  }
-
-  .card-projeto h3 {
-    font-size: 1rem;
-  }
-
-  .card-projeto p {
-    height: auto;
-    padding: 0;
-    font-size: 0.7rem;
-    line-height: 1.45;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-clamp: 2;
-    overflow: hidden;
-  }
-
-  .tecnologias {
-    display: flex;
-  }
-
-  .links-projeto {
-    padding-bottom: 0;
-    gap: 0.5rem;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .links-projeto a {
-    font-size: 0.65rem;
-    padding: 0.35rem 0.65rem;
-  }
-
-  /* Footer */
-  address {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(3.5rem, 1fr));
-    gap: 0.75rem;
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .card-footer {
-    width: 100%;
-    margin: 4rem 0 3rem;
-  }
-  .card-footer p {
-    display: none;
+    width: 18rem;
   }
 }
 
-/* ── 400px ──────────────────────────────────────────────── */
-@media (max-width: 400px) {
+/* ── 640px — projetos em 2 colunas ───────────────────────── */
+@media (min-width: 640px) {
+  .container-projeto {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* com 2 ou mais colunas, cards da mesma linha ficam com a mesma altura */
+  .card-projeto-new {
+    min-height: 23rem;
+  }
+}
+
+/* ── 768px — tablet ──────────────────────────────────────── */
+@media (min-width: 768px) {
   :root {
-    --fs-hero: 1rem;
-    --fs-nome: 1.3rem;
-    --fs-subtitulo: 1rem;
+    --gap-secoes: 5rem;
   }
 
-  header {
-    padding: 0 1rem;
+  /* habilidades: cards ainda compactos, 6 por linha (o Frontend inteiro
+     em uma linha). O tamanho cheio só volta a partir de 960px */
+  .container-icones-new {
+    --cols: 6;
   }
 
-  header img {
-    width: 4.2rem;
+  /* equilibra o tamanho das linhas sem esticar o espaço entre palavras */
+  .section-sobre-mim p {
+    text-wrap: balance;
   }
 
-  .container-img {
-    width: min(13rem, 72vw);
+  .footer-card-centered {
+    padding: 4.5rem 3rem 2.5rem;
+  }
+
+  /* contato em grade: e-mail na linha de cima, redes sociais embaixo */
+  .footer-buttons-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(100%, 36rem);
+  }
+
+  .btn-primary-email {
+    grid-column: 1 / -1;
+  }
+
+  .footer-btn {
+    max-width: none;
+  }
+}
+
+/* ── 960px — apresentação com mais espaço nas laterais ───── */
+@media (min-width: 960px) {
+  .container-apresentacao {
+    padding-inline: 4rem;
+  }
+
+  /* cards de habilidade no tamanho cheio, 4 por linha */
+  .container-icones-new {
+    --cols: 4;
+  }
+
+  .skill-card-new {
+    gap: 1rem;
+    padding: 1.6rem 1rem 1.4rem;
+  }
+
+  .skill-card-new i {
+    font-size: 3.2rem;
+  }
+
+  .skill-card-new > span {
+    font-size: 0.95rem;
+  }
+}
+
+/* ── 1080px — habilidades 6 por linha + projetos 4 colunas ─ */
+@media (min-width: 1080px) {
+  .container-icones-new {
+    --cols: 6;
+  }
+
+  :root {
+    --padding-bloco: 3.5rem 2.5rem;
+  }
+
+  .container-projeto {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ── 1100px — desktop: texto e foto lado a lado ──────────── */
+@media (min-width: 1100px) {
+  .nav-menu a {
+    padding: 0;
+    font-size: 0.68rem;
+  }
+
+  main {
+    max-width: 90%;
+  }
+
+  .container-apresentacao {
+    min-height: calc(100vh - 5rem);
+    margin-block: 8rem 6rem;
+    padding-block: 8rem 6rem;
+  }
+
+  .apresentacao {
+    flex-direction: row;
+    gap: clamp(3rem, 6vw, 10rem);
+    width: 90%;
+    text-align: left;
+  }
+
+  .section-apresentacao {
+    max-width: none;
+    margin: 0;
+  }
+
+  .nome-destaque {
+    font-size: clamp(4.2rem, 5.6vw, 5.4rem);
+    white-space: nowrap;
+  }
+
+  .texto-apresentacao {
+    max-width: 35rem;
+    margin-inline: 0;
   }
 
   .acoes-apresentacao {
-    width: 100%;
+    justify-content: flex-start;
   }
 
   .acoes-apresentacao a {
-    flex: 1;
-    min-width: 0;
+    flex: 0 0 auto;
   }
 
-  .section-apresentacao span,
-  .nome-destaque {
-    font-size: clamp(2.6rem, 15vw, 3.3rem);
+  /* a foto acompanha a largura da tela sem ser esmagada pelo texto */
+  .container-img {
+    --moldura: 1rem;
+    --recuo-fundo: 2rem;
+    flex-shrink: 0;
+    width: clamp(22rem, 30vw, 40rem);
   }
 
-  .container-icones {
-    grid-template-columns: repeat(2, minmax(4.5rem, 1fr));
+  .section-sobre-mim {
+    margin: 2rem auto 6rem;
+    padding: 2.5rem;
   }
 
-  .card-projeto {
-    flex-direction: column;
-  }
-
-  .card-projeto img {
-    width: 100%;
-    min-width: 0;
-    height: 9rem;
-    border-radius: 0;
-  }
-
-  .tecnologias {
+  /* contato: todos os botões em uma linha */
+  .footer-buttons-container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
   }
 
-  address {
-    grid-template-columns: repeat(2, minmax(5rem, 1fr));
+  .btn-primary-email {
+    grid-column: auto;
+  }
+
+  .footer-btn {
+    width: auto;
+  }
+}
+
+/* ── 1100px a 1279px — desktop estreito ──────────────────────
+   Nessa faixa o nome (que não quebra linha) + a foto não cabiam lado a
+   lado e a foto era cortada na borda direita. Aqui o bloco usa a largura
+   toda, o espaço entre texto e foto diminui e a foto fica um pouco menor.
+   A partir de 1280px nada muda. */
+@media (min-width: 1100px) and (max-width: 1279px) {
+  .apresentacao {
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .container-img {
+    width: clamp(17rem, 26vw, 22rem);
   }
 }
