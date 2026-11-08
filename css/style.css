@@ -451,7 +451,7 @@ main p {
   align-items: center;
   gap: 1.5rem;
   width: min(100%, var(--max-content));
-  margin: 1rem auto 3rem;
+  margin: 0 auto;
   padding: 1.5rem;
   border: 0.1rem solid var(--cor-primaria-40);
   border-radius: var(--radius-2xl);
@@ -929,8 +929,16 @@ footer {
 
 /* Sobre mim: o empilhamento fica no div que envolve a seção, porque a
    seção já usa transform/opacity na entrada (com transition) */
+/* No celular e tablet o "Sobre mim" ocupa a tela inteira, com o card no
+   meio. Assim, quando ele trava (ou ao clicar em "Sobre mim" no menu),
+   só ele aparece na tela, sem um pedaço da apresentação em cima.
+   No desktop volta ao tamanho do card (ver responsive.css, 1100px). */
 .empilhar-sobre {
-  display: flow-root; /* mantém as margens da seção dentro do div */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh; /* altura da tela sem a barra do navegador */
 }
 
 /* Espaço antes da habilidades e de projetos: enquanto a pessoa rola por

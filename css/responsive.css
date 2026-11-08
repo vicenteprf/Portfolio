@@ -245,6 +245,12 @@
     width: clamp(22rem, 30vw, 40rem);
   }
 
+  /* desktop: o "Sobre mim" volta a ter só o tamanho do card */
+  .empilhar-sobre {
+    display: flow-root; /* mantém as margens da seção dentro do div */
+    min-height: auto;
+  }
+
   .section-sobre-mim {
     margin: 2rem auto 6rem;
     padding: 2.5rem;
